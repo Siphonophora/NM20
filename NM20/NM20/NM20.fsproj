@@ -60,7 +60,7 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include="LogFileDownloader.fsx" />
-    <None Include="VirtualLogCreator.fsx" />
+    <None Include="LogFileCleaner.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data">

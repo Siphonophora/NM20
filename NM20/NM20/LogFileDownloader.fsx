@@ -1,4 +1,4 @@
-#r @"C:\Users\mike\source\repos\NM20\packages\FSharp.Data.2.4.6\lib\net45\FSharp.Data.dll"
+#r @"C:\Users\mike\Documents\GitHub\NM20\NM20\packages\FSharp.Data.2.4.6\lib\net45\FSharp.Data.dll"
 
 
 // "open" brings a .NET namespace into visibility
