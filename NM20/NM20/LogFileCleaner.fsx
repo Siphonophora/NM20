@@ -13,12 +13,13 @@ type Strength = Strength of int
 type Zone = Zone of int
 
 
-let basedir = @"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\2015cw\"
+let basedir = @"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\2017cw\"
+//let basedir = @"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\minilogs\"
 //let basedir = @"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\mediumlogs\"
 //let basedir = @"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\Badlogs\"
 
 
-let files = Directory.GetFiles (basedir + @"Real\")
+let files = Directory.GetFiles (basedir + @"Original\")
 let logSubmitters = files |> Array.map Path.GetFileNameWithoutExtension |> Array.toList
 
 let readLog file = 
@@ -55,7 +56,7 @@ let tryParseQso (qso:string) =
 
 let convertFile outdir file = 
     let callsign = Path.GetFileNameWithoutExtension file
-    let outfile = outdir + callsign + ".log.csv"
+    let outfile = outdir + callsign + ".csv"
     Directory.CreateDirectory(outdir) |> ignore
     let header = ["Frequency,Contest,CallTime,SentCallsign,SentStrength,SentZone,RecdCallsign,RecdStrength,RecdZone"]
     let csvs = readLog file |> List.map tryParseQso |> List.choose id
@@ -63,7 +64,7 @@ let convertFile outdir file =
     File.WriteAllLines(outfile, contents) |> ignore
 
 
-let convertToDir = convertFile (basedir + @"CSV\")
+let convertToDir = convertFile (basedir + @"CSV\Submitted\")
 
 files |> Array.map convertToDir |> ignore
 

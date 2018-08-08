@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NM20", "NM20\NM20.fsproj", "{2778BC22-D910-44A8-A573-DDCCC248E514}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualLogCreator", "VirtualLogCreator\VirtualLogCreator.csproj", "{4862BC56-F913-45F7-9725-03AFB198C29A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2778BC22-D910-44A8-A573-DDCCC248E514}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2778BC22-D910-44A8-A573-DDCCC248E514}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2778BC22-D910-44A8-A573-DDCCC248E514}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4862BC56-F913-45F7-9725-03AFB198C29A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4862BC56-F913-45F7-9725-03AFB198C29A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4862BC56-F913-45F7-9725-03AFB198C29A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4862BC56-F913-45F7-9725-03AFB198C29A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
