@@ -54,9 +54,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="SpotAnalyzer.cs" />
     <Compile Include="N1MMData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpotAnalysisUpdatedEventArgs.cs" />
+    <Compile Include="UDPMessageRecievedEventArgs.cs" />
+    <Compile Include="UDPServer.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,12 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\UDPServer.csproj">
-      <Project>{25a24a65-e47a-409a-98a9-30ac8024a11c}</Project>
-      <Name>UDPServer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
