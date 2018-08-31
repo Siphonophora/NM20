@@ -48,12 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Call.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrecalculatedAnalysis.cs" />
+    <Compile Include="PrecalculatedAnalysisRow.cs" />
+    <Compile Include="UDPServerThread.cs" />
+    <Compile Include="Spot.cs" />
     <Compile Include="SpotAnalyzer.cs" />
     <Compile Include="N1MMData.cs" />
     <Compile Include="Program.cs" />

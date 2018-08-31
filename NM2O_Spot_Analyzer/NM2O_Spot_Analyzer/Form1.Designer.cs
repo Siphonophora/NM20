@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.output = new System.Windows.Forms.TextBox();
             this.button = new System.Windows.Forms.Button();
             this.textUDPScroll = new System.Windows.Forms.TextBox();
+            this.SpotAnalysisGrid = new System.Windows.Forms.DataGridView();
+            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.spotBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // output
@@ -53,24 +62,63 @@
             // 
             // textUDPScroll
             // 
-            this.textUDPScroll.Location = new System.Drawing.Point(105, 171);
+            this.textUDPScroll.Location = new System.Drawing.Point(1198, 954);
             this.textUDPScroll.Multiline = true;
             this.textUDPScroll.Name = "textUDPScroll";
             this.textUDPScroll.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textUDPScroll.Size = new System.Drawing.Size(607, 236);
             this.textUDPScroll.TabIndex = 2;
             // 
+            // SpotAnalysisGrid
+            // 
+            this.SpotAnalysisGrid.AllowUserToOrderColumns = true;
+            this.SpotAnalysisGrid.AutoGenerateColumns = false;
+            this.SpotAnalysisGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SpotAnalysisGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.callDataGridViewTextBoxColumn,
+            this.valDataGridViewTextBoxColumn});
+            this.SpotAnalysisGrid.DataSource = this.spotBindingSource;
+            this.SpotAnalysisGrid.Location = new System.Drawing.Point(126, 191);
+            this.SpotAnalysisGrid.Name = "SpotAnalysisGrid";
+            this.SpotAnalysisGrid.RowTemplate.Height = 28;
+            this.SpotAnalysisGrid.Size = new System.Drawing.Size(1776, 604);
+            this.SpotAnalysisGrid.TabIndex = 3;
+            // 
+            // callDataGridViewTextBoxColumn
+            // 
+            this.callDataGridViewTextBoxColumn.DataPropertyName = "Call";
+            this.callDataGridViewTextBoxColumn.HeaderText = "Call";
+            this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
+            // 
+            // valDataGridViewTextBoxColumn
+            // 
+            this.valDataGridViewTextBoxColumn.DataPropertyName = "Val";
+            this.valDataGridViewTextBoxColumn.HeaderText = "Val";
+            this.valDataGridViewTextBoxColumn.Name = "valDataGridViewTextBoxColumn";
+            // 
+            // spotBindingSource
+            // 
+            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
+            // 
+            // spotBindingSource1
+            // 
+            this.spotBindingSource1.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(2353, 1317);
+            this.Controls.Add(this.SpotAnalysisGrid);
             this.Controls.Add(this.textUDPScroll);
             this.Controls.Add(this.button);
             this.Controls.Add(this.output);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,6 +130,12 @@
         private System.Windows.Forms.TextBox output;
         private System.Windows.Forms.Button button;
         private System.Windows.Forms.TextBox textUDPScroll;
+        private System.Windows.Forms.DataGridView SpotAnalysisGrid;
+        private System.Windows.Forms.BindingSource spotBindingSource;
+        private System.Windows.Forms.BindingSource spotBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn myPropertyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn callDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valDataGridViewTextBoxColumn;
     }
 }
 

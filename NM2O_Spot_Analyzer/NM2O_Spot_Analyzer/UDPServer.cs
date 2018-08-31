@@ -11,11 +11,6 @@ namespace NM2O_Spot_Analyzer
 {
     public class UDPServer
     {
-        public UDPServer()
-        {
-        }
-
-
         public event EventHandler<UDPMessageRecievedEventArgs> UDPMessageEvent;
 
         public void ServerThread()

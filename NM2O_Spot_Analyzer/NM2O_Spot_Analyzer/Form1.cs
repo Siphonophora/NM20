@@ -15,8 +15,10 @@ namespace NM2O_Spot_Analyzer
     public partial class Form1 : Form
     {
         public int ClickCount { get; set; } = 0;
-        public UDPServer Server { get; set; }
+        
         public SpotAnalyzer Analyzer { get; set; } = new SpotAnalyzer();
+        public BindingSource Source { get; set; } = new BindingSource();
+        public UDPServerThread ServerThread { get; set; } = new UDPServerThread();
 
         public Form1()
         {
@@ -27,36 +29,45 @@ namespace NM2O_Spot_Analyzer
             WireUpForm();
         }
 
+        private void RefreshData()
+        {
+            Source.ResetBindings(false);
+        }
+
         private void WireUpForm()
         {
-            Server.UDPMessageEvent += Server_UDPMessageEvent;
+            ServerThread.Server.UDPMessageEvent += Server_UDPMessageEvent;
             Analyzer.BufferUpdate += Buffer_BufferUpdate;
+
+
+            Source.DataSource = Analyzer.Spots;
+            SpotAnalysisGrid.DataSource = Source;
+            
         }
 
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Server.UDPMessageEvent -= Server_UDPMessageEvent;
+            ServerThread.Server.UDPMessageEvent -= Server_UDPMessageEvent;
             Analyzer.BufferUpdate -= Buffer_BufferUpdate;
-            
+            ServerThread.Thread.Abort();
+
         }
 
         private void Buffer_BufferUpdate(object sender, SpotAnalysisUpdatedEventArgs e)
         {
             textUDPScroll.Text = Analyzer.Buffer;
-            
+            RefreshData();
         }
 
         private void Server_UDPMessageEvent(object sender, UDPMessageRecievedEventArgs e)
         {
-            Invoke((MethodInvoker)delegate { Analyzer.ParseMessage($"{e.Message}\r\n"); });
+            Invoke((MethodInvoker)delegate { Analyzer.ParseMessage(e.Message); });
         }
 
         private void InitalizeUDP()
         {
-            Server = new UDPServer();
-            Thread thread = new Thread(new ThreadStart(Server.ServerThread));
-            thread.Start();
+
         }
 
 
@@ -64,6 +75,9 @@ namespace NM2O_Spot_Analyzer
 
         private void button_Click(object sender, EventArgs e)
         {
+            SpotAnalysisGrid.Sort(SpotAnalysisGrid.Columns[0], ListSortDirection.Ascending);
+            RefreshData();
+
             ClickCount++;
             output.Text = ClickCount.ToString();
         }
