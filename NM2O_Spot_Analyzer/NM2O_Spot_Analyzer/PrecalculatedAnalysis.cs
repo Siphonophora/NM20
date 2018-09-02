@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace NM2O_Spot_Analyzer
 {
-    public class PrecalculatedAnalysis
+    public static class PrecalculatedAnalysis
     {
-        public PrecalculatedAnalysis(string fileName)
+        //public PrecalculatedAnalysis(string fileName)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public static double GetValue(string call, RadioInfo.BandName band)
         {
-            throw new NotImplementedException();
+            Random random = new Random();
+            return random.NextDouble();
         }
 
-        public List<PrecalculatedAnalysisRow> Data { get; private set; }
+        public static List<PrecalculatedAnalysisRow> Data { get; private set; }
     }
 }

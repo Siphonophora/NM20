@@ -7,20 +7,42 @@ using System.Threading.Tasks;
 
 namespace NM2O_Spot_Analyzer
 {
-    public class Spot
+    public class Spot : ISpot
     {
+        public string Call { get; set; }
+        public double Frequency { get; set; }
+        public string Action { get; set; }
+        public string SpotterCall { get; set; }
+        public string Comment { get; set; }
+        public string Status { get; set; }
+        public DateTimeOffset OffsetTimestamp { get; set; }
+        public DateTime LocalTimestamp { get { return OffsetTimestamp.LocalDateTime; } }
+        public RadioInfo.BandName Band { get; set; }
+        public RadioInfo.Mode Mode { get; set; }
+        public double Value { get; set; }
+
         public Spot() { }
-        public Spot(string spotMessage)
+
+        public Spot(string contactMessage, bool minInfo = false)
         {
-            XElement element = XElement.Parse(spotMessage);
+            XElement element = XElement.Parse(contactMessage);
 
             Call = element.Element("dxcall").Value;
-            Val = -1;
+            Frequency = double.Parse(element.Element("frequency").Value);
+            Band = RadioInfo.DetermineBand(Frequency);
+            OffsetTimestamp = DateTimeOffset.Parse($"{element.Element("timestamp").Value} -00:00");
+
+            if (!minInfo)
+            {
+                Action = element.Element("action").Value;
+                SpotterCall = element.Element("spottercall").Value;
+                Comment = element.Element("comment").Value;
+                Status = element.Element("status").Value;
+                Mode = RadioInfo.DetermineMode(Comment);
+
+                Value = PrecalculatedAnalysis.GetValue(Call, Band);
+            }
 
         }
-
-
-        public string Call { get; set; }
-        public int Val { get; set; }
     }
 }
