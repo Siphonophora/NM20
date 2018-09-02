@@ -8,16 +8,21 @@ namespace NM2O_Spot_Analyzer
 {
     public class PrecalculatedAnalysisRow
     {
-        public PrecalculatedAnalysisRow(string call, float value)
+        public PrecalculatedAnalysisRow(string call, double hoursworked)
         {
             Call = call;
-            Value = value;
-        
+            HoursWorked = hoursworked;
+        }
 
-      
+        public PrecalculatedAnalysisRow(string row)
+        {
+            string[] data = row.Split(',');
+
+            Call = data[0];
+            HoursWorked = double.Parse(data[1]);
         }
 
         public string Call { get; private set; }
-        public float Value { get; private set; }
+        public double HoursWorked { get; private set; }
     }
 }

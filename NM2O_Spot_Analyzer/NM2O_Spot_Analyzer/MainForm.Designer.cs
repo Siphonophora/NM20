@@ -39,11 +39,18 @@
             this.ActionLogPage = new System.Windows.Forms.TabPage();
             this.ActionLog = new System.Windows.Forms.TextBox();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.SevenMHz = new System.Windows.Forms.ListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SevenMHz = new System.Windows.Forms.ListBox();
             this.TimezoneOffset = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.AllSpotsLabel = new System.Windows.Forms.Label();
+            this.AllSpots = new System.Windows.Forms.Label();
+            this.DisplaySpots = new System.Windows.Forms.Label();
+            this.DisplaySpotsLabel = new System.Windows.Forms.Label();
+            this.RadioBandsListBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,14 +59,7 @@
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.AllSpotsLabel = new System.Windows.Forms.Label();
-            this.AllSpots = new System.Windows.Forms.Label();
-            this.DisplaySpots = new System.Windows.Forms.Label();
-            this.DisplaySpotsLabel = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.SpottedModeListBox = new System.Windows.Forms.ListBox();
             this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
@@ -130,7 +130,7 @@
             this.RawLogPage.Location = new System.Drawing.Point(4, 29);
             this.RawLogPage.Name = "RawLogPage";
             this.RawLogPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RawLogPage.Size = new System.Drawing.Size(2345, 1077);
+            this.RawLogPage.Size = new System.Drawing.Size(2345, 1041);
             this.RawLogPage.TabIndex = 1;
             this.RawLogPage.Text = "Raw XML Message Log";
             this.RawLogPage.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@
             this.RawXMLMessageLog.Multiline = true;
             this.RawXMLMessageLog.Name = "RawXMLMessageLog";
             this.RawXMLMessageLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.RawXMLMessageLog.Size = new System.Drawing.Size(2339, 1071);
+            this.RawXMLMessageLog.Size = new System.Drawing.Size(2339, 1035);
             this.RawXMLMessageLog.TabIndex = 4;
             // 
             // ActionLogPage
@@ -151,7 +151,7 @@
             this.ActionLogPage.Location = new System.Drawing.Point(4, 29);
             this.ActionLogPage.Name = "ActionLogPage";
             this.ActionLogPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ActionLogPage.Size = new System.Drawing.Size(2345, 1077);
+            this.ActionLogPage.Size = new System.Drawing.Size(2345, 1041);
             this.ActionLogPage.TabIndex = 2;
             this.ActionLogPage.Text = "Action Log";
             this.ActionLogPage.UseVisualStyleBackColor = true;
@@ -164,7 +164,7 @@
             this.ActionLog.Multiline = true;
             this.ActionLog.Name = "ActionLog";
             this.ActionLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ActionLog.Size = new System.Drawing.Size(2339, 1071);
+            this.ActionLog.Size = new System.Drawing.Size(2339, 1035);
             this.ActionLog.TabIndex = 5;
             // 
             // SettingsTab
@@ -177,10 +177,23 @@
             this.SettingsTab.Location = new System.Drawing.Point(4, 29);
             this.SettingsTab.Name = "SettingsTab";
             this.SettingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SettingsTab.Size = new System.Drawing.Size(2345, 1077);
+            this.SettingsTab.Size = new System.Drawing.Size(2345, 1041);
             this.SettingsTab.TabIndex = 3;
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
+            // 
+            // SevenMHz
+            // 
+            this.SevenMHz.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "SelectedBands", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SevenMHz.DisplayMember = "SevenMHz";
+            this.SevenMHz.FormattingEnabled = true;
+            this.SevenMHz.ItemHeight = 20;
+            this.SevenMHz.Location = new System.Drawing.Point(1134, 316);
+            this.SevenMHz.Name = "SevenMHz";
+            this.SevenMHz.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.SevenMHz.Size = new System.Drawing.Size(256, 224);
+            this.SevenMHz.TabIndex = 4;
+            this.SevenMHz.ValueMember = global::NM2O_Spot_Analyzer.Properties.Settings.Default.SelectedBands;
             // 
             // checkedListBox1
             // 
@@ -207,28 +220,6 @@
             this.checkBox1.Text = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(119, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Timezone Offset";
-            // 
-            // SevenMHz
-            // 
-            this.SevenMHz.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "SelectedBands", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SevenMHz.DisplayMember = "SevenMHz";
-            this.SevenMHz.FormattingEnabled = true;
-            this.SevenMHz.ItemHeight = 20;
-            this.SevenMHz.Location = new System.Drawing.Point(1134, 316);
-            this.SevenMHz.Name = "SevenMHz";
-            this.SevenMHz.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.SevenMHz.Size = new System.Drawing.Size(256, 224);
-            this.SevenMHz.TabIndex = 4;
-            this.SevenMHz.ValueMember = global::NM2O_Spot_Analyzer.Properties.Settings.Default.SelectedBands;
-            // 
             // TimezoneOffset
             // 
             this.TimezoneOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "TimeZoneOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -240,10 +231,86 @@
             this.TimezoneOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEnter_NoDing);
             this.TimezoneOffset.Validating += new System.ComponentModel.CancelEventHandler(this.TimezoneOffset_Validating);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(119, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Timezone Offset";
+            // 
+            // AllSpotsLabel
+            // 
+            this.AllSpotsLabel.AutoSize = true;
+            this.AllSpotsLabel.Location = new System.Drawing.Point(36, 34);
+            this.AllSpotsLabel.Name = "AllSpotsLabel";
+            this.AllSpotsLabel.Size = new System.Drawing.Size(72, 20);
+            this.AllSpotsLabel.TabIndex = 6;
+            this.AllSpotsLabel.Text = "All Spots";
+            // 
+            // AllSpots
+            // 
+            this.AllSpots.AutoSize = true;
+            this.AllSpots.Location = new System.Drawing.Point(169, 36);
+            this.AllSpots.Name = "AllSpots";
+            this.AllSpots.Size = new System.Drawing.Size(45, 20);
+            this.AllSpots.TabIndex = 6;
+            this.AllSpots.Text = "1000";
+            this.AllSpots.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // DisplaySpots
+            // 
+            this.DisplaySpots.AutoSize = true;
+            this.DisplaySpots.Location = new System.Drawing.Point(169, 74);
+            this.DisplaySpots.Name = "DisplaySpots";
+            this.DisplaySpots.Size = new System.Drawing.Size(45, 20);
+            this.DisplaySpots.TabIndex = 7;
+            this.DisplaySpots.Text = "1000";
+            this.DisplaySpots.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // DisplaySpotsLabel
+            // 
+            this.DisplaySpotsLabel.AutoSize = true;
+            this.DisplaySpotsLabel.Location = new System.Drawing.Point(36, 72);
+            this.DisplaySpotsLabel.Name = "DisplaySpotsLabel";
+            this.DisplaySpotsLabel.Size = new System.Drawing.Size(124, 20);
+            this.DisplaySpotsLabel.TabIndex = 8;
+            this.DisplaySpotsLabel.Text = "Displayed Spots";
+            // 
+            // RadioBandsListBox
+            // 
+            this.RadioBandsListBox.FormattingEnabled = true;
+            this.RadioBandsListBox.ItemHeight = 20;
+            this.RadioBandsListBox.Location = new System.Drawing.Point(512, 63);
+            this.RadioBandsListBox.Name = "RadioBandsListBox";
+            this.RadioBandsListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.RadioBandsListBox.Size = new System.Drawing.Size(236, 164);
+            this.RadioBandsListBox.TabIndex = 9;
+            this.RadioBandsListBox.SelectedIndexChanged += new System.EventHandler(this.RefreshData);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(257, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(110, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Spotted Mode";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(508, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 20);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Radio Band";
+            // 
             // Value
             // 
             this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Value";
+            this.Value.HeaderText = "Hours Last Contest";
             this.Value.Name = "Value";
             this.Value.ReadOnly = true;
             // 
@@ -296,80 +363,16 @@
             this.SpotterCall.Name = "SpotterCall";
             this.SpotterCall.ReadOnly = true;
             // 
-            // comboBox1
+            // SpottedModeListBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(261, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 28);
-            this.comboBox1.TabIndex = 5;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.RefreshData);
-            // 
-            // AllSpotsLabel
-            // 
-            this.AllSpotsLabel.AutoSize = true;
-            this.AllSpotsLabel.Location = new System.Drawing.Point(36, 34);
-            this.AllSpotsLabel.Name = "AllSpotsLabel";
-            this.AllSpotsLabel.Size = new System.Drawing.Size(72, 20);
-            this.AllSpotsLabel.TabIndex = 6;
-            this.AllSpotsLabel.Text = "All Spots";
-            // 
-            // AllSpots
-            // 
-            this.AllSpots.AutoSize = true;
-            this.AllSpots.Location = new System.Drawing.Point(169, 36);
-            this.AllSpots.Name = "AllSpots";
-            this.AllSpots.Size = new System.Drawing.Size(45, 20);
-            this.AllSpots.TabIndex = 6;
-            this.AllSpots.Text = "1000";
-            this.AllSpots.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // DisplaySpots
-            // 
-            this.DisplaySpots.AutoSize = true;
-            this.DisplaySpots.Location = new System.Drawing.Point(169, 74);
-            this.DisplaySpots.Name = "DisplaySpots";
-            this.DisplaySpots.Size = new System.Drawing.Size(45, 20);
-            this.DisplaySpots.TabIndex = 7;
-            this.DisplaySpots.Text = "1000";
-            this.DisplaySpots.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // DisplaySpotsLabel
-            // 
-            this.DisplaySpotsLabel.AutoSize = true;
-            this.DisplaySpotsLabel.Location = new System.Drawing.Point(36, 72);
-            this.DisplaySpotsLabel.Name = "DisplaySpotsLabel";
-            this.DisplaySpotsLabel.Size = new System.Drawing.Size(124, 20);
-            this.DisplaySpotsLabel.TabIndex = 8;
-            this.DisplaySpotsLabel.Text = "Displayed Spots";
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(512, 63);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBox1.Size = new System.Drawing.Size(236, 164);
-            this.listBox1.TabIndex = 9;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(257, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Spotted Mode";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(508, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 20);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Radio Band";
+            this.SpottedModeListBox.FormattingEnabled = true;
+            this.SpottedModeListBox.ItemHeight = 20;
+            this.SpottedModeListBox.Location = new System.Drawing.Point(261, 63);
+            this.SpottedModeListBox.Name = "SpottedModeListBox";
+            this.SpottedModeListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.SpottedModeListBox.Size = new System.Drawing.Size(236, 164);
+            this.SpottedModeListBox.TabIndex = 12;
+            this.SpottedModeListBox.SelectedIndexChanged += new System.EventHandler(this.RefreshData);
             // 
             // callDataGridViewTextBoxColumn
             // 
@@ -387,14 +390,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2353, 1317);
+            this.Controls.Add(this.SpottedModeListBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.RadioBandsListBox);
             this.Controls.Add(this.DisplaySpots);
             this.Controls.Add(this.DisplaySpotsLabel);
             this.Controls.Add(this.AllSpots);
             this.Controls.Add(this.AllSpotsLabel);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
             this.Text = "NM2O Spot Analyzer";
@@ -433,6 +436,13 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ListBox SevenMHz;
+        private System.Windows.Forms.Label AllSpotsLabel;
+        private System.Windows.Forms.Label AllSpots;
+        private System.Windows.Forms.Label DisplaySpots;
+        private System.Windows.Forms.Label DisplaySpotsLabel;
+        private System.Windows.Forms.ListBox RadioBandsListBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn callDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
@@ -442,14 +452,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mode;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpotterCall;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label AllSpotsLabel;
-        private System.Windows.Forms.Label AllSpots;
-        private System.Windows.Forms.Label DisplaySpots;
-        private System.Windows.Forms.Label DisplaySpotsLabel;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox SpottedModeListBox;
     }
 }
 

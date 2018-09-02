@@ -35,6 +35,8 @@ namespace NM2O_Spot_Analyzer
             this.Width = Properties.Settings.Default.MainFormWidth;
             this.Location = Properties.Settings.Default.MainFormLocation;
             this.StartPosition = FormStartPosition.Manual;
+
+            PrecalculatedAnalysis.LoadAnalysis(@"analysis.csv");
         }
 
         private void MainForm_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -61,13 +63,22 @@ namespace NM2O_Spot_Analyzer
         {
             Spots.RemoveAll(x => x.Frequency > 0);
             List<RadioInfo.BandName> selectedBands = new List<RadioInfo.BandName>();
-            foreach (var o in listBox1.SelectedItems)
+            foreach (var o in RadioBandsListBox.SelectedItems)
             {
                 selectedBands.Add((RadioInfo.BandName)o);
             }
-            Spots.AddRange(Analyzer.Spots.Where(x =>   x.Mode == (RadioInfo.Mode)comboBox1.SelectedValue
+
+            List<RadioInfo.Mode> selectedModes = new List<RadioInfo.Mode>();
+            foreach (var o in SpottedModeListBox.SelectedItems)
+            {
+                selectedModes.Add((RadioInfo.Mode)o);
+            }
+
+
+
+            Spots.AddRange(Analyzer.Spots.Where(x =>   selectedModes.Contains(x.Mode)
                                                     && selectedBands.Contains(x.Band)
-                                                    ).OrderByDescending(x => x.Value));
+                                                    ).OrderBy(x => x.Value));
             Source.ResetBindings(false);
 
             DisplaySpots.Text = Spots.Count.ToString();
@@ -81,8 +92,8 @@ namespace NM2O_Spot_Analyzer
 
             SevenMHz.DataSource = Enum.GetValues(typeof(RadioInfo.BandName));
 
-            comboBox1.DataSource = Enum.GetValues(typeof(RadioInfo.Mode));
-            listBox1.DataSource = Enum.GetValues(typeof(RadioInfo.BandName));
+            SpottedModeListBox.DataSource = Enum.GetValues(typeof(RadioInfo.Mode));
+            RadioBandsListBox.DataSource = Enum.GetValues(typeof(RadioInfo.BandName));
 
             Source.DataSource = Spots;
             SpotAnalysisGrid.DataSource = Source;
@@ -132,6 +143,5 @@ namespace NM2O_Spot_Analyzer
                 e.Handled = true;
             }
         }
-
     }
 }

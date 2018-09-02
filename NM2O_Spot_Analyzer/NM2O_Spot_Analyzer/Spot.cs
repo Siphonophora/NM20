@@ -40,7 +40,7 @@ namespace NM2O_Spot_Analyzer
                 Status = element.Element("status").Value;
                 Mode = RadioInfo.DetermineMode(Comment);
 
-                Value = PrecalculatedAnalysis.GetValue(Call, Band);
+                Value = PrecalculatedAnalysis.GetValue(Call);
             }
 
         }

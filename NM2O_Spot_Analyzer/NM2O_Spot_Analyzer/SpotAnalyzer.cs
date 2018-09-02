@@ -31,9 +31,9 @@ namespace NM2O_Spot_Analyzer
 
                 Spot s = new Spot(message);
 
-                    LogAction("Del/Add", s);
-                    DeleteSpot(s);
-                    AddSpot(s);
+                LogAction("Del/Add", s);
+                DeleteSpot(s);
+                AddSpot(s);
             }
             else if (messageType == MessageType.SpotDelete || messageType == MessageType.SpotDupe)
             {
@@ -60,11 +60,11 @@ namespace NM2O_Spot_Analyzer
 
         public void LogAction(string action, ISpot s)
         {
-            string log = $"{DateTime.Now.ToString("yyyy-dd-mm HH:mm:ss.ffffff")} | ";
-            log += $"{ action.PadRight(10)}";
+            string log = $"{DateTime.Now.ToString("yyyy-dd-mm HH:mm:ss.ffffff")} |";
+            log += $" { action.PadRight(10)}";
             log += $" { s.Call.PadRight(10)}";
-            log += $" on { s.Band.ToString().PadRight(17)} ";
-            log += $"(Freq { s.Frequency.ToString("0.00").PadLeft(8)})";
+            log += $" on { s.Band.ToString().PadRight(17)}";
+            log += $" (Freq { s.Frequency.ToString("0.00").PadLeft(8)})";
 
             ActionLog.Add(log);
         }

@@ -82,5 +82,17 @@ namespace NM2O_Spot_Analyzer.Properties {
                 this["SelectedBands"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string StaticAnalysisFile {
+            get {
+                return ((string)(this["StaticAnalysisFile"]));
+            }
+            set {
+                this["StaticAnalysisFile"] = value;
+            }
+        }
     }
 }
