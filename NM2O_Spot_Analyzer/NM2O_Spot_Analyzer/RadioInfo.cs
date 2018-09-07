@@ -8,37 +8,36 @@ namespace NM2O_Spot_Analyzer
 {
     public static class RadioInfo
     {
-        public enum BandName { OnePointEightMHz, ThreePointFiveMHz, SevenMHz, FourteenMHz, TwentyOneMHz, TwentyEightMHz, None }
+        public enum BandName { OneSixtyMeters, EightyMeters, FourtyMeters, TwentyMeters, FifteenMeters, TenMeters, None }
 
         public static BandName DetermineBand(double frequency)
         {
-            if (Between(frequency, 500d, 2500d))
+            if (Between(frequency, 1800d, 1900d))
             {
-                return BandName.OnePointEightMHz;
+                return BandName.OneSixtyMeters;
             }
-            else if (Between(frequency, 2600d, 5000d))
+            else if (Between(frequency, 3500d, 3600d))
             {
-                return BandName.ThreePointFiveMHz;
+                return BandName.EightyMeters;
             }
-            else if (Between(frequency, 5000d, 10000d))
+            else if (Between(frequency, 7000d, 7100d))
             {
-                return BandName.SevenMHz;
+                return BandName.FourtyMeters;
             }
-            else if (Between(frequency, 11000d, 17000d))
+            else if (Between(frequency, 14000d, 14100d))
             {
-                return BandName.FourteenMHz;
+                return BandName.TwentyMeters;
             }
-            else if (Between(frequency, 18000d, 24000d))
+            else if (Between(frequency, 21000d, 21100d))
             {
-                return BandName.TwentyOneMHz;
+                return BandName.FifteenMeters;
             }
-            else if (Between(frequency, 25000d, 32000d))
+            else if (Between(frequency, 28000d, 28100d))
             {
-                return BandName.TwentyEightMHz;
+                return BandName.TenMeters;
             }
-            else
 
-                return BandName.None;
+            return BandName.None;
         }
 
         private static bool Between(double d, double min, double max)

@@ -34,6 +34,16 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.AnalysisPage = new System.Windows.Forms.TabPage();
             this.SpotAnalysisGrid = new System.Windows.Forms.DataGridView();
+            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RawLogPage = new System.Windows.Forms.TabPage();
             this.RawXMLMessageLog = new System.Windows.Forms.TextBox();
             this.ActionLogPage = new System.Windows.Forms.TabPage();
@@ -51,24 +61,18 @@
             this.RadioBandsListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SpottedModeListBox = new System.Windows.Forms.ListBox();
-            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.AnalysisPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).BeginInit();
             this.RawLogPage.SuspendLayout();
             this.ActionLogPage.SuspendLayout();
             this.SettingsTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -123,6 +127,73 @@
             this.SpotAnalysisGrid.RowTemplate.Height = 28;
             this.SpotAnalysisGrid.Size = new System.Drawing.Size(2339, 1035);
             this.SpotAnalysisGrid.TabIndex = 4;
+            // 
+            // callDataGridViewTextBoxColumn
+            // 
+            this.callDataGridViewTextBoxColumn.DataPropertyName = "Call";
+            this.callDataGridViewTextBoxColumn.HeaderText = "Call";
+            this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
+            this.callDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Hours Last Contest";
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            // 
+            // Frequency
+            // 
+            this.Frequency.DataPropertyName = "Frequency";
+            this.Frequency.HeaderText = "Frequency";
+            this.Frequency.Name = "Frequency";
+            this.Frequency.ReadOnly = true;
+            // 
+            // Band
+            // 
+            this.Band.DataPropertyName = "Band";
+            this.Band.HeaderText = "Band";
+            this.Band.Name = "Band";
+            this.Band.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Timestamp
+            // 
+            this.Timestamp.DataPropertyName = "LocalTimestamp";
+            this.Timestamp.HeaderText = "Local Timestamp";
+            this.Timestamp.Name = "Timestamp";
+            this.Timestamp.ReadOnly = true;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
+            // 
+            // Mode
+            // 
+            this.Mode.DataPropertyName = "Mode";
+            this.Mode.HeaderText = "Mode";
+            this.Mode.Name = "Mode";
+            this.Mode.ReadOnly = true;
+            // 
+            // SpotterCall
+            // 
+            this.SpotterCall.DataPropertyName = "SpotterCall";
+            this.SpotterCall.HeaderText = "SpotterCall";
+            this.SpotterCall.Name = "SpotterCall";
+            this.SpotterCall.ReadOnly = true;
+            // 
+            // spotBindingSource
+            // 
+            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
             // 
             // RawLogPage
             // 
@@ -307,62 +378,6 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Radio Band";
             // 
-            // Value
-            // 
-            this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Hours Last Contest";
-            this.Value.Name = "Value";
-            this.Value.ReadOnly = true;
-            // 
-            // Frequency
-            // 
-            this.Frequency.DataPropertyName = "Frequency";
-            this.Frequency.HeaderText = "Frequency";
-            this.Frequency.Name = "Frequency";
-            this.Frequency.ReadOnly = true;
-            // 
-            // Band
-            // 
-            this.Band.DataPropertyName = "Band";
-            this.Band.HeaderText = "Band";
-            this.Band.Name = "Band";
-            this.Band.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Timestamp
-            // 
-            this.Timestamp.DataPropertyName = "LocalTimestamp";
-            this.Timestamp.HeaderText = "Local Timestamp";
-            this.Timestamp.Name = "Timestamp";
-            this.Timestamp.ReadOnly = true;
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
-            // 
-            // Mode
-            // 
-            this.Mode.DataPropertyName = "Mode";
-            this.Mode.HeaderText = "Mode";
-            this.Mode.Name = "Mode";
-            this.Mode.ReadOnly = true;
-            // 
-            // SpotterCall
-            // 
-            this.SpotterCall.DataPropertyName = "SpotterCall";
-            this.SpotterCall.HeaderText = "SpotterCall";
-            this.SpotterCall.Name = "SpotterCall";
-            this.SpotterCall.ReadOnly = true;
-            // 
             // SpottedModeListBox
             // 
             this.SpottedModeListBox.FormattingEnabled = true;
@@ -374,22 +389,51 @@
             this.SpottedModeListBox.TabIndex = 12;
             this.SpottedModeListBox.SelectedIndexChanged += new System.EventHandler(this.RefreshData);
             // 
-            // callDataGridViewTextBoxColumn
+            // label4
             // 
-            this.callDataGridViewTextBoxColumn.DataPropertyName = "Call";
-            this.callDataGridViewTextBoxColumn.HeaderText = "Call";
-            this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
-            this.callDataGridViewTextBoxColumn.ReadOnly = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "label4";
             // 
-            // spotBindingSource
+            // label5
             // 
-            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(903, 233);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(220, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Hours This Country THis band";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1053, 198);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(202, 20);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Hours This Zone THis band";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1224, 164);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(167, 20);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Check boxes per band";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2353, 1317);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.SpottedModeListBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -405,13 +449,13 @@
             this.tabControl.ResumeLayout(false);
             this.AnalysisPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).EndInit();
             this.RawLogPage.ResumeLayout(false);
             this.RawLogPage.PerformLayout();
             this.ActionLogPage.ResumeLayout(false);
             this.ActionLogPage.PerformLayout();
             this.SettingsTab.ResumeLayout(false);
             this.SettingsTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,6 +497,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mode;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpotterCall;
         private System.Windows.Forms.ListBox SpottedModeListBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
