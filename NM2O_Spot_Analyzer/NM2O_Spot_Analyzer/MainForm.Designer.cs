@@ -34,16 +34,6 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.AnalysisPage = new System.Windows.Forms.TabPage();
             this.SpotAnalysisGrid = new System.Windows.Forms.DataGridView();
-            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.RawLogPage = new System.Windows.Forms.TabPage();
             this.RawXMLMessageLog = new System.Windows.Forms.TextBox();
             this.ActionLogPage = new System.Windows.Forms.TabPage();
@@ -66,13 +56,25 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.AnalysisPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).BeginInit();
             this.RawLogPage.SuspendLayout();
             this.ActionLogPage.SuspendLayout();
             this.SettingsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -118,7 +120,9 @@
             this.Timestamp,
             this.Comment,
             this.Mode,
-            this.SpotterCall});
+            this.SpotterCall,
+            this.Country,
+            this.Zone});
             this.SpotAnalysisGrid.DataSource = this.spotBindingSource;
             this.SpotAnalysisGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpotAnalysisGrid.Location = new System.Drawing.Point(3, 3);
@@ -127,73 +131,6 @@
             this.SpotAnalysisGrid.RowTemplate.Height = 28;
             this.SpotAnalysisGrid.Size = new System.Drawing.Size(2339, 1035);
             this.SpotAnalysisGrid.TabIndex = 4;
-            // 
-            // callDataGridViewTextBoxColumn
-            // 
-            this.callDataGridViewTextBoxColumn.DataPropertyName = "Call";
-            this.callDataGridViewTextBoxColumn.HeaderText = "Call";
-            this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
-            this.callDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Value
-            // 
-            this.Value.DataPropertyName = "Value";
-            this.Value.HeaderText = "Hours Last Contest";
-            this.Value.Name = "Value";
-            this.Value.ReadOnly = true;
-            // 
-            // Frequency
-            // 
-            this.Frequency.DataPropertyName = "Frequency";
-            this.Frequency.HeaderText = "Frequency";
-            this.Frequency.Name = "Frequency";
-            this.Frequency.ReadOnly = true;
-            // 
-            // Band
-            // 
-            this.Band.DataPropertyName = "Band";
-            this.Band.HeaderText = "Band";
-            this.Band.Name = "Band";
-            this.Band.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
-            // Timestamp
-            // 
-            this.Timestamp.DataPropertyName = "LocalTimestamp";
-            this.Timestamp.HeaderText = "Local Timestamp";
-            this.Timestamp.Name = "Timestamp";
-            this.Timestamp.ReadOnly = true;
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
-            // 
-            // Mode
-            // 
-            this.Mode.DataPropertyName = "Mode";
-            this.Mode.HeaderText = "Mode";
-            this.Mode.Name = "Mode";
-            this.Mode.ReadOnly = true;
-            // 
-            // SpotterCall
-            // 
-            this.SpotterCall.DataPropertyName = "SpotterCall";
-            this.SpotterCall.HeaderText = "SpotterCall";
-            this.SpotterCall.Name = "SpotterCall";
-            this.SpotterCall.ReadOnly = true;
-            // 
-            // spotBindingSource
-            // 
-            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
             // 
             // RawLogPage
             // 
@@ -425,6 +362,87 @@
             this.label7.TabIndex = 16;
             this.label7.Text = "Check boxes per band";
             // 
+            // spotBindingSource
+            // 
+            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
+            // 
+            // callDataGridViewTextBoxColumn
+            // 
+            this.callDataGridViewTextBoxColumn.DataPropertyName = "Call";
+            this.callDataGridViewTextBoxColumn.HeaderText = "Call";
+            this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
+            this.callDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "Value";
+            this.Value.HeaderText = "Hours Last Contest";
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            // 
+            // Frequency
+            // 
+            this.Frequency.DataPropertyName = "Frequency";
+            this.Frequency.HeaderText = "Frequency";
+            this.Frequency.Name = "Frequency";
+            this.Frequency.ReadOnly = true;
+            // 
+            // Band
+            // 
+            this.Band.DataPropertyName = "Band";
+            this.Band.HeaderText = "Band";
+            this.Band.Name = "Band";
+            this.Band.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Timestamp
+            // 
+            this.Timestamp.DataPropertyName = "LocalTimestamp";
+            this.Timestamp.HeaderText = "Local Timestamp";
+            this.Timestamp.Name = "Timestamp";
+            this.Timestamp.ReadOnly = true;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
+            // 
+            // Mode
+            // 
+            this.Mode.DataPropertyName = "Mode";
+            this.Mode.HeaderText = "Mode";
+            this.Mode.Name = "Mode";
+            this.Mode.ReadOnly = true;
+            // 
+            // SpotterCall
+            // 
+            this.SpotterCall.DataPropertyName = "SpotterCall";
+            this.SpotterCall.HeaderText = "SpotterCall";
+            this.SpotterCall.Name = "SpotterCall";
+            this.SpotterCall.ReadOnly = true;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            // 
+            // Zone
+            // 
+            this.Zone.DataPropertyName = "Zone";
+            this.Zone.HeaderText = "Zone";
+            this.Zone.Name = "Zone";
+            this.Zone.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -449,13 +467,13 @@
             this.tabControl.ResumeLayout(false);
             this.AnalysisPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).EndInit();
             this.RawLogPage.ResumeLayout(false);
             this.RawLogPage.PerformLayout();
             this.ActionLogPage.ResumeLayout(false);
             this.ActionLogPage.PerformLayout();
             this.SettingsTab.ResumeLayout(false);
             this.SettingsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spotBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,6 +505,11 @@
         private System.Windows.Forms.ListBox RadioBandsListBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox SpottedModeListBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn callDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
@@ -496,11 +519,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mode;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpotterCall;
-        private System.Windows.Forms.ListBox SpottedModeListBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Country;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zone;
     }
 }
 

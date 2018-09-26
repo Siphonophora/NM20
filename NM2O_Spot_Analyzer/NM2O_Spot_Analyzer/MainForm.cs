@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using CallParser;
 
 
 namespace NM2O_Spot_Analyzer
@@ -21,6 +22,7 @@ namespace NM2O_Spot_Analyzer
         public BindingSource Source { get; set; } = new BindingSource();
         public UDPServerThread ServerThread { get; set; } = new UDPServerThread();
         public List<Spot> Spots { get; set; } = new List<Spot>();
+        public static CountryParser CallParser = new CountryParser(@"N1MM_CountryList.dat");
 
         public MainForm()
         {

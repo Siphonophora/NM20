@@ -16,9 +16,7 @@ namespace NM2O_Spot_Analyzer_UnitTests
         {
             PrecalculatedAnalysis.LoadAnalysis(@"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\2017cw\analysis.csv");
 
-            Spot spot = new Spot(message);
-
-;
+            Spot spot = new Spot(message);;
 
             Assert.AreEqual(hours, spot.Value);
         }

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F27E3ED-4C37-4123-9CD2-50C53D3457D0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>StaticAnalyzer</RootNamespace>
-    <AssemblyName>StaticAnalyzer</AssemblyName>
+    <ProjectGuid>{64CAD39C-D1E5-4BB7-B141-F4D1C89730F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassLibrary1</RootNamespace>
+    <AssemblyName>ClassLibrary1</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,18 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CallOverride.cs" />
+    <Compile Include="CallPrefix.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="CallParser.cs" />
+    <Compile Include="ICountryZone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QSO.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NM2O_Spot_Analyzer\NM2O_Spot_Analyzer.csproj">
-      <Project>{23bacfda-905f-405f-9455-b1df869808ab}</Project>
-      <Name>NM2O_Spot_Analyzer</Name>
-    </ProjectReference>
+    <None Include="N1MM_CountryList.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

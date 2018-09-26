@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CallParser;
 
 namespace NM2O_Spot_Analyzer
 {
@@ -20,6 +21,9 @@ namespace NM2O_Spot_Analyzer
         public RadioInfo.BandName Band { get; set; }
         public RadioInfo.Mode Mode { get; set; }
         public double Value { get; set; }
+        public ICountryZone CountryZone { get; set; }
+        public string Country { get { return CountryZone.Country; } }         //TODO handle nulls. 
+        public int Zone { get { return CountryZone.CQZone; } }         //TODO handle nulls. 
 
         public Spot() { }
 
@@ -43,6 +47,15 @@ namespace NM2O_Spot_Analyzer
                 Value = PrecalculatedAnalysis.GetValue(Call);
             }
 
+            try
+            {
+                CountryZone = MainForm.CallParser.CheckCall(Call);
+            }
+            catch (Exception)
+            {
+
+                //just catch this
+            }
         }
     }
 }
