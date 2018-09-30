@@ -14,7 +14,7 @@ namespace NM2O_Spot_Analyzer_UnitTests
         [TestCase(35, "<?xml version=\"1.0\" encoding=\"utf-8\"?><spot><StationName>DESKTOP-6C0F16O</StationName><dxcall>3Z0X</dxcall><frequency>21150.06</frequency><spottercall>KO7SS-#</spottercall><comment>CW 11 DB 22 WPM NCDXF BCN </comment><action>add</action><status>double mult</status><timestamp>2018-08-29 01:21:51</timestamp></spot>")]
         public void asdfClassifyMessage_VariousNormalMessages_Succeed(double hours, string message)
         {
-            PrecalculatedAnalysis.LoadAnalysis(@"C:\Users\mike\Dropbox\NM2O_Project\ContestLogs\2017cw\analysis.csv");
+            PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
 
             Spot spot = new Spot(message);;
 

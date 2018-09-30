@@ -4,28 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CallParser;
+using Utility;
 
 namespace NM2O_Spot_Analyzer
 {
     public static class PrecalculatedAnalysis
     {
-        //public PrecalculatedAnalysis(string fileName)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        public static List<PrecalculatedAnalysisRow> Analysis { get; set; } = new List<PrecalculatedAnalysisRow>();
-        
-        public static void LoadAnalysis(string file)
+        public static List<CallAnalysis> Call_Analysis { get; set; } = new List<CallAnalysis>();
+        public static List<CountryZoneAnalysis> CountryZone_Analysis { get; set; } = new List<CountryZoneAnalysis>();
+
+        public static void LoadAnalysis(string callFile, string countryZoneFile)
         {
-            Analysis.RemoveAll(x => x.Call != null);
-            List<string> lines = File.ReadAllLines(file).ToList();
+            Call_Analysis.RemoveAll(x => x.Call != null);
+            List<string> callLines = File.ReadAllLines(callFile).ToList();
 
-            foreach (var line in lines)
+            foreach (var line in callLines)
             {
                 try
                 {
-                    Analysis.Add(new PrecalculatedAnalysisRow(line));
+                    Call_Analysis.Add(new CallAnalysis(line));
+                }
+                catch (Exception)
+                {
+                    //Skip on error
+                }
+            }
+
+            List<string> countryZoneLines = File.ReadAllLines(countryZoneFile).ToList();
+            foreach (var line in countryZoneLines)
+            {
+                try
+                {
+                    CountryZone_Analysis.Add(new CountryZoneAnalysis(line));
                 }
                 catch (Exception)
                 {
@@ -35,20 +47,6 @@ namespace NM2O_Spot_Analyzer
 
         }
 
-        public static double GetValue(string call)
-        {
-            try
-            {
-                var r = Analysis.First(x => x.Call == call);
-                return r.HoursWorked;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-           
-        }
-
-        public static List<PrecalculatedAnalysisRow> Data { get; private set; }
+        public static List<CallAnalysis> Data { get; private set; }
     }
 }

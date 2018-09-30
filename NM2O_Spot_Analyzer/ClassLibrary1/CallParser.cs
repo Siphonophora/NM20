@@ -91,7 +91,7 @@ namespace CallParser
             //TODO pick apart spots with slashes. 
             for (int i = call.Length; i > 0; i--)
             {
-                ICountryZone cp = CallPrefixes.Where(x => x.Prefix == call.Substring(0, i)).FirstOrDefault();
+                ICountryZone cp = CallPrefixes.Where(x => string.Equals(x.Prefix, call.Substring(0, i), StringComparison.CurrentCultureIgnoreCase) == true).FirstOrDefault();
                 if (cp != null)
                 {
                     return cp;

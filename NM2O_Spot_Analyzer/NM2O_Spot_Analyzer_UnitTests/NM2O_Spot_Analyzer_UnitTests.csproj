@@ -54,16 +54,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpotValueModel_Tests.cs" />
     <Compile Include="Spot_Tests.cs" />
     <Compile Include="SpotAnalyzer_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Call_Analysis.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CountryZone_Analysis.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="MessageBuffer.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\CallParser.csproj">
+      <Project>{64cad39c-d1e5-4bb7-b141-f4d1c89730f0}</Project>
+      <Name>CallParser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NM2O_Spot_Analyzer\NM2O_Spot_Analyzer.csproj">
       <Project>{23bacfda-905f-405f-9455-b1df869808ab}</Project>
       <Name>NM2O_Spot_Analyzer</Name>

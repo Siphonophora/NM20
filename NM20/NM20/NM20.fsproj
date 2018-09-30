@@ -59,7 +59,7 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
-    <None Include="LogFileDownloader.fsx" />
+    <None Include="NOAAFileDownloader.fsx" />
     <None Include="LogFileCleaner.fsx" />
     <None Include="LogFileVirtualGenerator.fsx" />
   </ItemGroup>

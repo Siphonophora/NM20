@@ -58,8 +58,9 @@
     </Compile>
     <Compile Include="ISpot.cs" />
     <Compile Include="PrecalculatedAnalysis.cs" />
-    <Compile Include="PrecalculatedAnalysisRow.cs" />
+    <Compile Include="CallAnalysis.cs" />
     <Compile Include="Contact.cs" />
+    <Compile Include="SpotValueModel.cs" />
     <Compile Include="UDPServerThread.cs" />
     <Compile Include="Spot.cs" />
     <Compile Include="SpotAnalyzer.cs" />
@@ -82,7 +83,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="analysis.csv">
+    <None Include="Call_Analysis.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CountryZone_Analysis.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ISpot.datasource" />
@@ -104,6 +108,10 @@
     <ProjectReference Include="..\ClassLibrary1\CallParser.csproj">
       <Project>{64cad39c-d1e5-4bb7-b141-f4d1c89730f0}</Project>
       <Name>CallParser</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{7aa65e9a-35bf-4e65-b733-ba66a21136ec}</Project>
+      <Name>Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -38,7 +38,7 @@ namespace NM2O_Spot_Analyzer
             this.Location = Properties.Settings.Default.MainFormLocation;
             this.StartPosition = FormStartPosition.Manual;
 
-            PrecalculatedAnalysis.LoadAnalysis(@"analysis.csv");
+            PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
         }
 
         private void MainForm_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -47,6 +47,7 @@ namespace NM2O_Spot_Analyzer
             Analyzer.BufferUpdate -= Buffer_BufferUpdate;
             ServerThread.Thread.Abort();
 
+            Directory.CreateDirectory($"C:\\temp\\");
             File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Messages.txt", Analyzer.MessageBuffer);
             File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Actions.txt", Analyzer.ActionLog);
 
@@ -78,9 +79,10 @@ namespace NM2O_Spot_Analyzer
 
 
 
-            Spots.AddRange(Analyzer.Spots.Where(x =>   selectedModes.Contains(x.Mode)
+            Spots.AddRange(Analyzer.Spots.Where(x => selectedModes.Contains(x.Mode)
                                                     && selectedBands.Contains(x.Band)
-                                                    ).OrderBy(x => x.Value));
+                                                    && (x.Country != "United States" || x.Multiplier > 0)
+                                                    ).OrderByDescending(x => x.Value));
             Source.ResetBindings(false);
 
             DisplaySpots.Text = Spots.Count.ToString();
@@ -111,7 +113,14 @@ namespace NM2O_Spot_Analyzer
 
         private void Server_UDPMessageEvent(object sender, UDPMessageRecievedEventArgs e)
         {
-            Invoke((MethodInvoker)delegate { Analyzer.ParseMessage(e.Message); });
+            try
+            {
+                Invoke((MethodInvoker)delegate { Analyzer.ParseMessage(e.Message); });
+            }
+            catch (Exception)
+            {
+                //Failed parsing is acceptable
+            }
         }
 
         private void TimezoneOffset_Validating(object sender, CancelEventArgs e)

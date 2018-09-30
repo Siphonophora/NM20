@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace NM2O_Spot_Analyzer
 {
-    public class PrecalculatedAnalysisRow
+    public class CallAnalysis
     {
-        public PrecalculatedAnalysisRow(string call, double hoursworked)
+        public CallAnalysis(string call, double hoursworked)
         {
             Call = call;
             HoursWorked = hoursworked;
         }
 
-        public PrecalculatedAnalysisRow(string row)
+        public CallAnalysis(string row)
         {
             string[] data = row.Split(',');
 

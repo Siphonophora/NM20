@@ -16,11 +16,29 @@ namespace NM2O_Spot_Analyzer
         public string SpotterCall { get; set; }
         public string Comment { get; set; }
         public string Status { get; set; }
+        public int Multiplier
+        {
+            get
+            {
+                if (Status.Contains("doub"))
+                {
+                    return 2;
+                }
+                else if (Status.Contains("sing"))
+                {
+                    return 1;
+                }
+                return 0;
+            }
+        }
         public DateTimeOffset OffsetTimestamp { get; set; }
         public DateTime LocalTimestamp { get { return OffsetTimestamp.LocalDateTime; } }
         public RadioInfo.BandName Band { get; set; }
         public RadioInfo.Mode Mode { get; set; }
-        public double Value { get; set; }
+        public SpotValueModel ValueModel { get; set; }
+        public double Value { get { return ValueModel.Value; } }
+        public string ValueString { get { return ValueModel.Value.ToString("0.0"); } }
+        public string ValueModelString { get { return ValueModel.ToString(); } }
         public ICountryZone CountryZone { get; set; }
         public string Country { get { return CountryZone.Country; } }         //TODO handle nulls. 
         public int Zone { get { return CountryZone.CQZone; } }         //TODO handle nulls. 
@@ -35,6 +53,7 @@ namespace NM2O_Spot_Analyzer
             Frequency = double.Parse(element.Element("frequency").Value);
             Band = RadioInfo.DetermineBand(Frequency);
             OffsetTimestamp = DateTimeOffset.Parse($"{element.Element("timestamp").Value} -00:00");
+            CountryZone = MainForm.CallParser.CheckCall(Call);
 
             if (!minInfo)
             {
@@ -44,17 +63,7 @@ namespace NM2O_Spot_Analyzer
                 Status = element.Element("status").Value;
                 Mode = RadioInfo.DetermineMode(Comment);
 
-                Value = PrecalculatedAnalysis.GetValue(Call);
-            }
-
-            try
-            {
-                CountryZone = MainForm.CallParser.CheckCall(Call);
-            }
-            catch (Exception)
-            {
-
-                //just catch this
+                ValueModel = new SpotValueModel(Call, CountryZone, Band, Multiplier);
             }
         }
     }

@@ -12,27 +12,27 @@ namespace NM2O_Spot_Analyzer
 
         public static BandName DetermineBand(double frequency)
         {
-            if (Between(frequency, 1800d, 1900d))
+            if (Between(frequency, 1800d, 2400d))
             {
                 return BandName.OneSixtyMeters;
             }
-            else if (Between(frequency, 3500d, 3600d))
+            else if (Between(frequency, 3500d, 4000d))
             {
                 return BandName.EightyMeters;
             }
-            else if (Between(frequency, 7000d, 7100d))
+            else if (Between(frequency, 7000d, 7500d))
             {
                 return BandName.FourtyMeters;
             }
-            else if (Between(frequency, 14000d, 14100d))
+            else if (Between(frequency, 14000d, 14500d))
             {
                 return BandName.TwentyMeters;
             }
-            else if (Between(frequency, 21000d, 21100d))
+            else if (Between(frequency, 21000d, 21500d))
             {
                 return BandName.FifteenMeters;
             }
-            else if (Between(frequency, 28000d, 28100d))
+            else if (Between(frequency, 28000d, 32000d))
             {
                 return BandName.TenMeters;
             }
