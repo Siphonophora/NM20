@@ -39,6 +39,8 @@ namespace NM2O_Spot_Analyzer
             this.StartPosition = FormStartPosition.Manual;
 
             PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
+            VoacapRunner runner = new VoacapRunner();
+            runner.Run();
         }
 
         private void MainForm_FormClosing_1(object sender, FormClosingEventArgs e)

@@ -46,9 +46,13 @@
     <Compile Include="CallParser.cs" />
     <Compile Include="ICountryZone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VoacapRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="N1MM_CountryList.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="voacapx.dat.template">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
