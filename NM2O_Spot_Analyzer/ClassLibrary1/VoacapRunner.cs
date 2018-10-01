@@ -17,20 +17,36 @@ namespace CallParser
         public void Run()
         {
             CountryParser parser = new CountryParser(@"N1MM_CountryList.dat");
-            string[] template = File.ReadAllLines("voacapx.dat.template");
-            parser.Countries.ForEach(x => CreateCountryFiles(x, template));
+            var outtext = new List<string>();
 
+            string[] templatehead = File.ReadAllLines("voacapx.dat.templatehead");
+            outtext.AddRange(templatehead);
+
+            string[] templatebody = File.ReadAllLines("voacapx.dat.templatebody");
+            
+            parser.Countries
+                .OrderBy(x => x.FixedName)
+                .ToList()                
+                .ForEach(x => outtext.AddRange(CreateCountryFiles(x, templatebody)));
+
+
+            string[] templatefoot = File.ReadAllLines("voacapx.dat.templatefoot");
+            outtext.AddRange(templatefoot);
+
+
+            File.WriteAllLines($"C:\\itshfbc\\run\\NM2O_SpotAnalyzer.dat", outtext);
         }
 
-        public void CreateCountryFiles(Country country, string[] template)
+        public List<string> CreateCountryFiles(Country country, string[] template)
         {
-            CreatePathFile(country, template, "S");
-            CreatePathFile(country, template, "L");
+            var outtext = CreatePathFile(country, template, "S");
+            outtext.AddRange(CreatePathFile(country, template, "L"));
+            return outtext;
         }
 
-        public void CreatePathFile(Country country, string[] template, string path)
+        public List<string> CreatePathFile(Country country, string[] template, string path)
         {
-            List<string> outtext = new List<string>();
+            var outtext = new List<string>();
 
             for (int i = 0; i < template.Length; i++)
             {
@@ -41,7 +57,7 @@ namespace CallParser
                     .Replace("$LongTo$", country.VoacapLong)
                     .Replace("$Path$", path));
             }
-            File.WriteAllLines($"C:\\itshfbc\\run\\{country.FixedName}_{path}.dat", outtext);
+            return outtext;
         }
     }
 }

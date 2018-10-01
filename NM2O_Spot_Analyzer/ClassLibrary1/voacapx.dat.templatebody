@@ -1,0 +1,3 @@
+LABEL     $Path$                   $CountryName$
+CIRCUIT   42.65N    73.75W    $LatTo$    $LongTo$  $Path$     0
+EXECUTE

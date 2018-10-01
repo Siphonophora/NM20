@@ -52,7 +52,13 @@
     <None Include="N1MM_CountryList.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="voacapx.dat.template">
+    <None Include="voacapx.dat.templatefoot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="voacapx.dat.templatehead">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="voacapx.dat.templatebody">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
