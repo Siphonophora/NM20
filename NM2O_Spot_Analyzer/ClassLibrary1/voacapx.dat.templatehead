@@ -1,5 +1,5 @@
 COMMENT    Any VOACAP default cards may be placed in the file: VOACAP.DEF
-LINEMAX      55       number of lines-per-page
+LINEMAX      30       number of lines-per-page
 COEFFS    CCIR
 TIME          1   24    1    1
 MONTH      2018 9.30
