@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace CallParser
 {
@@ -34,7 +35,10 @@ namespace CallParser
             outtext.AddRange(templatefoot);
 
 
-            File.WriteAllLines($"C:\\itshfbc\\run\\NM2O_SpotAnalyzer.dat", outtext);
+            File.WriteAllLines($"C:\\itshfbc\\run\\NM2O_Voacap.dat", outtext);
+            RunVoacap(@"C:\itshfbc\bin_win\", @"c:\itshfbc NM2O_Voacap.dat NM2O_Voacap.out");
+
+
         }
 
         public List<string> CreateCountryFiles(Country country, string[] template)
@@ -58,6 +62,41 @@ namespace CallParser
                     .Replace("$Path$", path));
             }
             return outtext;
+        }
+
+        /// <summary>
+        /// Runs an R script from a file using Rscript.exe.
+        /// Example:  
+        ///   RScriptRunner.RunFromCmd(curDirectory + @"\ImageClustering.r", "rscript.exe", curDirectory.Replace('\\','/'));
+        /// Getting args passed from C# using R:
+        ///   args = commandArgs(trailingOnly = TRUE)
+        ///   print(args[1]);
+        /// Source: https://stackoverflow.com/questions/4485943/executing-r-script-programmatically
+        /// </summary>
+        /// <param name="rCodeFilePath">File where your R code is located.</param>
+        /// <param name="rScriptExecutablePath">Usually only requires "rscript.exe"</param>
+        /// <param name="args">Multiple R args can be seperated by spaces.</param>
+        /// <returns>Returns a string with the R responses.</returns>
+        public static void RunVoacap(string rScriptExecutablePath, string args)
+        {
+            try
+            {
+                var info = new ProcessStartInfo(@"C:\itshfbc\bin_win\voacapw.exe")
+                {
+                    Arguments = args               
+                };
+
+
+                using (var proc = new Process())
+                {
+                    proc.StartInfo = info;
+                    proc.Start();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Voacap failed: ", ex);
+            }
         }
     }
 }

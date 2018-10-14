@@ -79,6 +79,10 @@
       <Project>{23bacfda-905f-405f-9455-b1df869808ab}</Project>
       <Name>NM2O_Spot_Analyzer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{7aa65e9a-35bf-4e65-b733-ba66a21136ec}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

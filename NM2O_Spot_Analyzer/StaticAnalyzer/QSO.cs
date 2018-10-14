@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NM2O_Spot_Analyzer;
+using Utility;
 
 namespace StaticAnalyzer
 {

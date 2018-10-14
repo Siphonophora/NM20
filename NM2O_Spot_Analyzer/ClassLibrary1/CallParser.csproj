@@ -46,6 +46,8 @@
     <Compile Include="CallParser.cs" />
     <Compile Include="ICountryZone.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Propogation.cs" />
+    <Compile Include="VoacapPropogation.cs" />
     <Compile Include="VoacapRunner.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +63,12 @@
     <None Include="voacapx.dat.templatebody">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{7aa65e9a-35bf-4e65-b733-ba66a21136ec}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

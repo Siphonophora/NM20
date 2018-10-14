@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using NM2O_Spot_Analyzer;
 using NUnit.Framework;
 using CallParser;
+using Utility;
 
 namespace NM2O_Spot_Analyzer_UnitTests
 {

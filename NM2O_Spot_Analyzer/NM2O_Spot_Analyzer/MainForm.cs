@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 using CallParser;
-
+using Utility;
 
 namespace NM2O_Spot_Analyzer
 {
@@ -21,8 +21,9 @@ namespace NM2O_Spot_Analyzer
         public SpotAnalyzer Analyzer { get; set; } = new SpotAnalyzer();
         public BindingSource Source { get; set; } = new BindingSource();
         public UDPServerThread ServerThread { get; set; } = new UDPServerThread();
-        public List<Spot> Spots { get; set; } = new List<Spot>();
+        public List<Spot> Spots = new List<Spot>();
         public static CountryParser CallParser = new CountryParser(@"N1MM_CountryList.dat");
+        public static VoacapPropogation VoacapPropogation { get; set; }  = new VoacapPropogation();
 
         public MainForm()
         {
@@ -39,8 +40,6 @@ namespace NM2O_Spot_Analyzer
             this.StartPosition = FormStartPosition.Manual;
 
             PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
-            VoacapRunner runner = new VoacapRunner();
-            runner.Run();
         }
 
         private void MainForm_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -66,6 +65,13 @@ namespace NM2O_Spot_Analyzer
 
         private void RefreshData()
         {
+            //Get propogations
+            foreach (Spot spot in Analyzer.Spots)
+            {
+                spot.Propogation = VoacapPropogation.CurrentPropogation(spot.FixedCountryName, spot.Band);
+            }
+
+
             Spots.RemoveAll(x => x.Frequency > 0);
             List<RadioInfo.BandName> selectedBands = new List<RadioInfo.BandName>();
             foreach (var o in RadioBandsListBox.SelectedItems)
@@ -78,7 +84,6 @@ namespace NM2O_Spot_Analyzer
             {
                 selectedModes.Add((RadioInfo.Mode)o);
             }
-
 
 
             Spots.AddRange(Analyzer.Spots.Where(x => selectedModes.Contains(x.Mode)

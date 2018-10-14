@@ -34,24 +34,16 @@
             this.tabControl = new System.Windows.Forms.TabControl();
             this.AnalysisPage = new System.Windows.Forms.TabPage();
             this.SpotAnalysisGrid = new System.Windows.Forms.DataGridView();
-            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RawLogPage = new System.Windows.Forms.TabPage();
             this.RawXMLMessageLog = new System.Windows.Forms.TextBox();
             this.ActionLogPage = new System.Windows.Forms.TabPage();
             this.ActionLog = new System.Windows.Forms.TextBox();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.SevenMHz = new System.Windows.Forms.ListBox();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.TimezoneOffset = new System.Windows.Forms.TextBox();
             this.AllSpotsLabel = new System.Windows.Forms.Label();
             this.AllSpots = new System.Windows.Forms.Label();
             this.DisplaySpots = new System.Windows.Forms.Label();
@@ -62,11 +54,20 @@
             this.SpottedModeListBox = new System.Windows.Forms.ListBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SevenMHz = new System.Windows.Forms.ListBox();
-            this.TimezoneOffset = new System.Windows.Forms.TextBox();
-            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValueModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Value = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Band = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Country = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Zone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PropogationRel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValueModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SpotterCall = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Timestamp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl.SuspendLayout();
             this.AnalysisPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).BeginInit();
@@ -120,6 +121,7 @@
             this.Mode,
             this.Country,
             this.Zone,
+            this.PropogationRel,
             this.ValueModel,
             this.SpotterCall,
             this.Timestamp});
@@ -131,80 +133,6 @@
             this.SpotAnalysisGrid.RowTemplate.Height = 28;
             this.SpotAnalysisGrid.Size = new System.Drawing.Size(2339, 1035);
             this.SpotAnalysisGrid.TabIndex = 4;
-            // 
-            // Value
-            // 
-            this.Value.DataPropertyName = "ValueString";
-            this.Value.HeaderText = "Value";
-            this.Value.Name = "Value";
-            this.Value.ReadOnly = true;
-            this.Value.Width = 50;
-            // 
-            // Frequency
-            // 
-            this.Frequency.DataPropertyName = "Frequency";
-            this.Frequency.HeaderText = "Frequency";
-            this.Frequency.Name = "Frequency";
-            this.Frequency.ReadOnly = true;
-            // 
-            // Band
-            // 
-            this.Band.DataPropertyName = "Band";
-            this.Band.HeaderText = "Band";
-            this.Band.Name = "Band";
-            this.Band.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Visible = false;
-            // 
-            // Comment
-            // 
-            this.Comment.DataPropertyName = "Comment";
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            this.Comment.ReadOnly = true;
-            this.Comment.Visible = false;
-            // 
-            // Mode
-            // 
-            this.Mode.DataPropertyName = "Mode";
-            this.Mode.HeaderText = "Mode";
-            this.Mode.Name = "Mode";
-            this.Mode.ReadOnly = true;
-            this.Mode.Visible = false;
-            // 
-            // Country
-            // 
-            this.Country.DataPropertyName = "Country";
-            this.Country.HeaderText = "Country";
-            this.Country.Name = "Country";
-            this.Country.ReadOnly = true;
-            // 
-            // Zone
-            // 
-            this.Zone.DataPropertyName = "Zone";
-            this.Zone.HeaderText = "Zone";
-            this.Zone.Name = "Zone";
-            this.Zone.ReadOnly = true;
-            // 
-            // SpotterCall
-            // 
-            this.SpotterCall.DataPropertyName = "SpotterCall";
-            this.SpotterCall.HeaderText = "SpotterCall";
-            this.SpotterCall.Name = "SpotterCall";
-            this.SpotterCall.ReadOnly = true;
-            // 
-            // Timestamp
-            // 
-            this.Timestamp.DataPropertyName = "LocalTimestamp";
-            this.Timestamp.HeaderText = "Local Timestamp";
-            this.Timestamp.Name = "Timestamp";
-            this.Timestamp.ReadOnly = true;
             // 
             // RawLogPage
             // 
@@ -264,6 +192,19 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // SevenMHz
+            // 
+            this.SevenMHz.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "SelectedBands", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SevenMHz.DisplayMember = "SevenMHz";
+            this.SevenMHz.FormattingEnabled = true;
+            this.SevenMHz.ItemHeight = 20;
+            this.SevenMHz.Location = new System.Drawing.Point(1134, 316);
+            this.SevenMHz.Name = "SevenMHz";
+            this.SevenMHz.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.SevenMHz.Size = new System.Drawing.Size(256, 224);
+            this.SevenMHz.TabIndex = 4;
+            this.SevenMHz.ValueMember = global::NM2O_Spot_Analyzer.Properties.Settings.Default.SelectedBands;
+            // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
@@ -297,6 +238,17 @@
             this.label1.Size = new System.Drawing.Size(126, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Timezone Offset";
+            // 
+            // TimezoneOffset
+            // 
+            this.TimezoneOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "TimeZoneOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TimezoneOffset.Location = new System.Drawing.Point(284, 50);
+            this.TimezoneOffset.Name = "TimezoneOffset";
+            this.TimezoneOffset.Size = new System.Drawing.Size(100, 26);
+            this.TimezoneOffset.TabIndex = 1;
+            this.TimezoneOffset.Text = global::NM2O_Spot_Analyzer.Properties.Settings.Default.TimeZoneOffset;
+            this.TimezoneOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEnter_NoDing);
+            this.TimezoneOffset.Validating += new System.ComponentModel.CancelEventHandler(this.TimezoneOffset_Validating);
             // 
             // AllSpotsLabel
             // 
@@ -390,29 +342,9 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Width = 300;
             // 
-            // SevenMHz
+            // spotBindingSource
             // 
-            this.SevenMHz.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "SelectedBands", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SevenMHz.DisplayMember = "SevenMHz";
-            this.SevenMHz.FormattingEnabled = true;
-            this.SevenMHz.ItemHeight = 20;
-            this.SevenMHz.Location = new System.Drawing.Point(1134, 316);
-            this.SevenMHz.Name = "SevenMHz";
-            this.SevenMHz.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.SevenMHz.Size = new System.Drawing.Size(256, 224);
-            this.SevenMHz.TabIndex = 4;
-            this.SevenMHz.ValueMember = global::NM2O_Spot_Analyzer.Properties.Settings.Default.SelectedBands;
-            // 
-            // TimezoneOffset
-            // 
-            this.TimezoneOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "TimeZoneOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TimezoneOffset.Location = new System.Drawing.Point(284, 50);
-            this.TimezoneOffset.Name = "TimezoneOffset";
-            this.TimezoneOffset.Size = new System.Drawing.Size(100, 26);
-            this.TimezoneOffset.TabIndex = 1;
-            this.TimezoneOffset.Text = global::NM2O_Spot_Analyzer.Properties.Settings.Default.TimeZoneOffset;
-            this.TimezoneOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEnter_NoDing);
-            this.TimezoneOffset.Validating += new System.ComponentModel.CancelEventHandler(this.TimezoneOffset_Validating);
+            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
             // 
             // callDataGridViewTextBoxColumn
             // 
@@ -420,6 +352,73 @@
             this.callDataGridViewTextBoxColumn.HeaderText = "Call";
             this.callDataGridViewTextBoxColumn.Name = "callDataGridViewTextBoxColumn";
             this.callDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Value
+            // 
+            this.Value.DataPropertyName = "ValueString";
+            this.Value.HeaderText = "Value";
+            this.Value.Name = "Value";
+            this.Value.ReadOnly = true;
+            this.Value.Width = 50;
+            // 
+            // Frequency
+            // 
+            this.Frequency.DataPropertyName = "Frequency";
+            this.Frequency.HeaderText = "Frequency";
+            this.Frequency.Name = "Frequency";
+            this.Frequency.ReadOnly = true;
+            // 
+            // Band
+            // 
+            this.Band.DataPropertyName = "Band";
+            this.Band.HeaderText = "Band";
+            this.Band.Name = "Band";
+            this.Band.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Visible = false;
+            // 
+            // Comment
+            // 
+            this.Comment.DataPropertyName = "Comment";
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.ReadOnly = true;
+            this.Comment.Visible = false;
+            // 
+            // Mode
+            // 
+            this.Mode.DataPropertyName = "Mode";
+            this.Mode.HeaderText = "Mode";
+            this.Mode.Name = "Mode";
+            this.Mode.ReadOnly = true;
+            this.Mode.Visible = false;
+            // 
+            // Country
+            // 
+            this.Country.DataPropertyName = "Country";
+            this.Country.HeaderText = "Country";
+            this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
+            // 
+            // Zone
+            // 
+            this.Zone.DataPropertyName = "Zone";
+            this.Zone.HeaderText = "Zone";
+            this.Zone.Name = "Zone";
+            this.Zone.ReadOnly = true;
+            // 
+            // PropogationRel
+            // 
+            this.PropogationRel.DataPropertyName = "PropogationRel";
+            this.PropogationRel.HeaderText = "PropogationRel";
+            this.PropogationRel.Name = "PropogationRel";
+            this.PropogationRel.ReadOnly = true;
             // 
             // ValueModel
             // 
@@ -429,9 +428,19 @@
             this.ValueModel.ReadOnly = true;
             this.ValueModel.Width = 300;
             // 
-            // spotBindingSource
+            // SpotterCall
             // 
-            this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
+            this.SpotterCall.DataPropertyName = "SpotterCall";
+            this.SpotterCall.HeaderText = "SpotterCall";
+            this.SpotterCall.Name = "SpotterCall";
+            this.SpotterCall.ReadOnly = true;
+            // 
+            // Timestamp
+            // 
+            this.Timestamp.DataPropertyName = "LocalTimestamp";
+            this.Timestamp.HeaderText = "Local Timestamp";
+            this.Timestamp.Name = "Timestamp";
+            this.Timestamp.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -493,6 +502,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox SpottedModeListBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn callDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
@@ -502,10 +512,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Country;
         private System.Windows.Forms.DataGridViewTextBoxColumn Zone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PropogationRel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValueModel;
         private System.Windows.Forms.DataGridViewTextBoxColumn SpotterCall;
         private System.Windows.Forms.DataGridViewTextBoxColumn Timestamp;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
 

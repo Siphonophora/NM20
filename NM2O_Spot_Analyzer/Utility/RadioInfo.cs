@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NM2O_Spot_Analyzer
+namespace Utility
 {
     public static class RadioInfo
     {

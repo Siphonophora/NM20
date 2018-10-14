@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CallParser;
+using Utility;
 
 namespace NM2O_Spot_Analyzer
 {
@@ -56,11 +57,11 @@ namespace NM2O_Spot_Analyzer
             try
             {
 
-                CallScarcity = (double)((PrecalculatedAnalysis.Call_Analysis.Where(x => x.Call == call).FirstOrDefault().HoursWorked * -1) + 24) / 6;
+                CallScarcity = (double)(PrecalculatedAnalysis.Call_Analysis.Where(x => x.Call == call).FirstOrDefault().HoursWorked ) / 6;
             }
             catch (Exception)
             {
-                CallScarcity = 4;
+                CallScarcity = 8;
             }
 
         }
