@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CallParser;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CallParser;
 using Utility;
 
 namespace NM2O_Spot_Analyzer
@@ -37,7 +37,7 @@ namespace NM2O_Spot_Analyzer
         {
             get
             {
-                if(Band == RadioInfo.BandName.None)
+                if (Band == RadioInfo.BandName.None)
                 {
                     return 0;
                 }
@@ -57,7 +57,7 @@ namespace NM2O_Spot_Analyzer
             try
             {
 
-                CallScarcity = (double)(PrecalculatedAnalysis.Call_Analysis.Where(x => x.Call == call).FirstOrDefault().HoursWorked ) / 6;
+                CallScarcity = (double)(PrecalculatedAnalysis.Call_Analysis.Where(x => x.Call == call).FirstOrDefault().HoursWorked) / 6;
             }
             catch (Exception)
             {
@@ -110,18 +110,19 @@ namespace NM2O_Spot_Analyzer
 
         public override string ToString()
         {
-            string s = $"Mult {Multiplier}, ";
-            if (Multiplier == 2)
-            {
-                s += $"Zone Scarcity {ZoneScarcity.ToString("0.0")}, ";
-            }
+            string s = "";
+            s += $"Value {(Value < 10 ? "  " : "")}{Value.ToString("0.0")} <= ";
+            s += $"Mult {Multiplier}. ";
+            s += $"Call {CallScarcity.ToString("0.0")}. ";
             if (Multiplier >= 1)
             {
-                s += $"Country Scarcity {CountryScarcity.ToString("0.0")}, ";
+                s += $"Country {CountryScarcity.ToString("0.0")}. ";
+            }
+            if (Multiplier == 2)
+            {
+                s += $"Zone {ZoneScarcity.ToString("0.0")}. ";
             }
 
-            s += $"Call Scarcity {CallScarcity.ToString("0.0")}";
-            s += $" = Value {Value.ToString("0.0")}";
             return s;
         }
     }

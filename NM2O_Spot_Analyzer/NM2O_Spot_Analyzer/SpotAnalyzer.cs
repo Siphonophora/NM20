@@ -24,6 +24,7 @@ namespace NM2O_Spot_Analyzer
             {
                 //If add spot
                 //1. Process it. 
+
                 //2. Delete any Matching Call and Band
                 //3. Add it. 
                 //Notes: In the case that another contact that shares multipliers is made, you get an Add which is really an update, with the reduced mult status

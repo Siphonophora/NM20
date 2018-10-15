@@ -20,5 +20,11 @@
     <Setting Name="StaticAnalysisFile" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="LatFrom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">42.65N</Value>
+    </Setting>
+    <Setting Name="LongFrom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">73.75W</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

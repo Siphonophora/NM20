@@ -1,10 +1,16 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.Configuration;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
+using System.IO;
 using System.Diagnostics;
+
 
 namespace CallParser
 {
@@ -15,7 +21,7 @@ namespace CallParser
         //Files must exist in the RUN directory. 
 
 
-        public void Run()
+        public void Run(string LatFrom, string LongFrom)
         {
             CountryParser parser = new CountryParser(@"N1MM_CountryList.dat");
             var outtext = new List<string>();
@@ -24,11 +30,11 @@ namespace CallParser
             outtext.AddRange(templatehead);
 
             string[] templatebody = File.ReadAllLines("voacapx.dat.templatebody");
-            
+
             parser.Countries
                 .OrderBy(x => x.FixedName)
-                .ToList()                
-                .ForEach(x => outtext.AddRange(CreateCountryFiles(x, templatebody)));
+                .ToList()
+                .ForEach(x => outtext.AddRange(CreateCountryFiles(LatFrom, LongFrom, x, templatebody)));
 
 
             string[] templatefoot = File.ReadAllLines("voacapx.dat.templatefoot");
@@ -41,14 +47,14 @@ namespace CallParser
 
         }
 
-        public List<string> CreateCountryFiles(Country country, string[] template)
+        public List<string> CreateCountryFiles(string LatFrom, string LongFrom, Country country, string[] template)
         {
-            var outtext = CreatePathFile(country, template, "S");
-            outtext.AddRange(CreatePathFile(country, template, "L"));
+            var outtext = CreatePathFile(LatFrom, LongFrom, country, template, "S");
+            outtext.AddRange(CreatePathFile(LatFrom, LongFrom, country, template, "L"));
             return outtext;
         }
 
-        public List<string> CreatePathFile(Country country, string[] template, string path)
+        public List<string> CreatePathFile(string LatFrom, string LongFrom, Country country, string[] template, string path)
         {
             var outtext = new List<string>();
 
@@ -59,6 +65,8 @@ namespace CallParser
                     .Replace("$CountryName$", country.FixedName)
                     .Replace("$LatTo$", country.VoacapLat)
                     .Replace("$LongTo$", country.VoacapLong)
+                    .Replace("$LatFrom$", LatFrom)
+                    .Replace("$LongFrom$", LongFrom)
                     .Replace("$Path$", path));
             }
             return outtext;
@@ -83,7 +91,7 @@ namespace CallParser
             {
                 var info = new ProcessStartInfo(@"C:\itshfbc\bin_win\voacapw.exe")
                 {
-                    Arguments = args               
+                    Arguments = args
                 };
 
 

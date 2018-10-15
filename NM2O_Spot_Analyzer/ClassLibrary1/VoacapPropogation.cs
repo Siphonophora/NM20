@@ -1,6 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,28 +13,32 @@ namespace CallParser
         public VoacapRunner VoacapRunner { get; private set; }
 
         List<Propogation> Propogations { get; set; }
+        public DateTime PropDate { get; private set; }
 
-        public VoacapPropogation()
+
+        public void Load()
         {
-            Refresh();
+            Propogations = ParsePropogations();
         }
 
-        public void Refresh()
+        public void Run(string LatFrom, string LongFrom)
         {
             VoacapRunner = new VoacapRunner();
-            //VoacapRunner.Run(); //TODO enable this?
-            Propogations = ParsePropogations();
+            VoacapRunner.Run(LatFrom, LongFrom); //TODO enable this?
         }
 
         /// <summary>
         /// This is a fairly naieve parser. May not handle all situations correctly if voacap output varies. 
         /// </summary>
         /// <returns></returns>
-        public List<Propogation> ParsePropogations()
+        private List<Propogation> ParsePropogations()
         {
             List<Propogation> newProps = new List<Propogation>();
 
-            string[] rows = File.ReadAllLines(@"C:\itshfbc\run\nm2o_voacap.out");
+            string file = @"C:\itshfbc\run\nm2o_voacap.out";
+            var fileInfo = new FileInfo(file);
+            PropDate = fileInfo.LastWriteTime;
+            string[] rows = File.ReadAllLines(file);
 
             string country = "";
             string path = "";
@@ -120,7 +124,7 @@ namespace CallParser
         /// <returns></returns>
         private Propogation InterpolatePropogation(Propogation pn, Propogation pf)
         {
-            float hfract = (float)DateTime.UtcNow.Minute/60;
+            float hfract = (float)DateTime.UtcNow.Minute / 60;
             float newrel = pn.Rel + ((pf.Rel - pn.Rel) * hfract);
 
             return new Propogation(pn.Country, pn.Hour + hfract, pn.Path, newrel, pn.Band);

@@ -23,5 +23,6 @@ namespace CallParser
         public RadioInfo.BandName Band { get; set; }
         public string Path { get; set; }
         public float Rel { get; set; }
+        public float RelValueMult => Rel < 0.05 ? 0f : (Rel < 0.25 ? 0.5f : 1f);
     }
 }

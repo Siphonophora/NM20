@@ -45,7 +45,7 @@ namespace NM2O_Spot_Analyzer
                 {
                     if (Propogation.Rel > -1)
                     {
-                        return ValueModel.Value * Propogation.Rel;
+                        return ValueModel.Value * Propogation.RelValueMult;
                     }
                 }
                 catch (Exception)
@@ -98,7 +98,7 @@ namespace NM2O_Spot_Analyzer
                         return "Unavailable";
                     }
 
-                    return $"{(Propogation.Path == "S" ? "Short: " : "Long: ")}{Propogation.Rel.ToString("0.00")}";
+                    return $"x{Propogation.RelValueMult.ToString("0.0")} <= {(Propogation.Path == "S" ? "Short: " : "Long: ")}{Propogation.Rel.ToString("0.00")}";
                 }
                 catch (Exception)
                 {

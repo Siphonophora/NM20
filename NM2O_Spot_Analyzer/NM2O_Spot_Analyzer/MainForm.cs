@@ -40,6 +40,7 @@ namespace NM2O_Spot_Analyzer
             this.StartPosition = FormStartPosition.Manual;
 
             PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
+            LoadPropButton_Click(this, null);
         }
 
         private void MainForm_FormClosing_1(object sender, FormClosingEventArgs e)
@@ -101,14 +102,11 @@ namespace NM2O_Spot_Analyzer
             ServerThread.Server.UDPMessageEvent += Server_UDPMessageEvent;
             Analyzer.BufferUpdate += Buffer_BufferUpdate;
 
-            SevenMHz.DataSource = Enum.GetValues(typeof(RadioInfo.BandName));
-
             SpottedModeListBox.DataSource = Enum.GetValues(typeof(RadioInfo.Mode));
             RadioBandsListBox.DataSource = Enum.GetValues(typeof(RadioInfo.BandName));
 
             Source.DataSource = Spots;
             SpotAnalysisGrid.DataSource = Source;
-
         }
 
         private void Buffer_BufferUpdate(object sender, SpotAnalysisUpdatedEventArgs e)
@@ -126,7 +124,7 @@ namespace NM2O_Spot_Analyzer
             }
             catch (Exception)
             {
-                //Failed parsing is acceptable
+                Analyzer.ActionLog.Add($"{DateTime.Now.ToString("yyyy-dd-mm HH:mm:ss.ffffff")} | Parsing Failed for {e.Message}");
             }
         }
 
@@ -160,6 +158,17 @@ namespace NM2O_Spot_Analyzer
             {
                 e.Handled = true;
             }
+        }
+
+        private void LoadPropButton_Click(object sender, EventArgs e)
+        {
+            VoacapPropogation.Load();
+            PropDateLabel.Text = "Run on : " + VoacapPropogation.PropDate.ToShortDateString();
+        }
+
+        private void RunPropButton_Click(object sender, EventArgs e)
+        {
+            VoacapPropogation.Run(LatFrom.Text, LongFrom.Text);
         }
     }
 }
