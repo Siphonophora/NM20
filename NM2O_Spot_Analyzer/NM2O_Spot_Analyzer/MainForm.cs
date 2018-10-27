@@ -1,15 +1,15 @@
-﻿using System;
+﻿using CallParser;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using CallParser;
 using Utility;
 
 namespace NM2O_Spot_Analyzer
@@ -23,13 +23,20 @@ namespace NM2O_Spot_Analyzer
         public UDPServerThread ServerThread { get; set; } = new UDPServerThread();
         public List<Spot> Spots = new List<Spot>();
         public static CountryParser CallParser = new CountryParser(@"N1MM_CountryList.dat");
-        public static VoacapPropogation VoacapPropogation { get; set; }  = new VoacapPropogation();
+        public static VoacapPropogation VoacapPropogation { get; set; } = new VoacapPropogation();
 
         public MainForm()
         {
-            InitializeComponent();
-            InitalizeMainForm();
-            WireUpForm();
+            try
+            {
+                InitializeComponent();
+                InitalizeMainForm();
+                WireUpForm();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"{e}\r\n\r\n{e.Message}\r\n\r\n{e.HelpLink}\r\n\r\n{e.StackTrace}", "Error in Main form Initalization");
+            }
         }
 
         private void InitalizeMainForm()

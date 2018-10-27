@@ -35,6 +35,7 @@ namespace CallParser
         {
             List<Propogation> newProps = new List<Propogation>();
 
+            //TODO the program will fail if the file doesn't exist
             string file = @"C:\itshfbc\run\nm2o_voacap.out";
             var fileInfo = new FileInfo(file);
             PropDate = fileInfo.LastWriteTime;
