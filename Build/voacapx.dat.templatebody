@@ -1,0 +1,3 @@
+LABEL     $Path$                   $CountryName$
+CIRCUIT   $LatFrom$    $LongFrom$    $LatTo$    $LongTo$  $Path$     0
+EXECUTE

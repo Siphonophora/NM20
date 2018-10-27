@@ -1,0 +1,12 @@
+COMMENT    Any VOACAP default cards may be placed in the file: VOACAP.DEF
+LINEMAX      30       number of lines-per-page
+COEFFS    CCIR
+TIME          1   24    1    1
+MONTH      2018 9.30
+SUNSPOT     15.
+SYSTEM       1. 145. 0.10  90. 73.0 3.00 0.10
+FPROB      1.00 1.00 1.00 0.00
+ANTENNA       1    1    2   30     0.000[DEFAULT\CONST17.VOA  ]  0.0  500.0000
+ANTENNA       2    2    2   30     0.000[DEFAULT\SWWHIP.VOA   ]  0.0    0.0000
+FREQUENCY  1.80 3.50 7.0014.0021.0028.00 0.00 0.00 0.00 0.00 0.00
+METHOD       30    0
