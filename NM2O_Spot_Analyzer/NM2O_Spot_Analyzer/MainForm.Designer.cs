@@ -54,6 +54,8 @@
             this.ActionLogPage = new System.Windows.Forms.TabPage();
             this.ActionLog = new System.Windows.Forms.TextBox();
             this.SettingsTab = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.LongFrom = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -83,11 +85,13 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.IPLabel = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.IncreaseFontSize = new System.Windows.Forms.Button();
             this.callDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValueModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.spotBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DecreaseFontSize = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.AnalysisPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpotAnalysisGrid)).BeginInit();
@@ -280,7 +284,7 @@
             this.RawXMLMessageLog.Multiline = true;
             this.RawXMLMessageLog.Name = "RawXMLMessageLog";
             this.RawXMLMessageLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.RawXMLMessageLog.Size = new System.Drawing.Size(1119, 459);
+            this.RawXMLMessageLog.Size = new System.Drawing.Size(1119, 456);
             this.RawXMLMessageLog.TabIndex = 4;
             // 
             // ActionLogPage
@@ -302,11 +306,15 @@
             this.ActionLog.Multiline = true;
             this.ActionLog.Name = "ActionLog";
             this.ActionLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ActionLog.Size = new System.Drawing.Size(1119, 459);
+            this.ActionLog.Size = new System.Drawing.Size(1119, 456);
             this.ActionLog.TabIndex = 5;
             // 
             // SettingsTab
             // 
+            this.SettingsTab.Controls.Add(this.DecreaseFontSize);
+            this.SettingsTab.Controls.Add(this.IncreaseFontSize);
+            this.SettingsTab.Controls.Add(this.label10);
+            this.SettingsTab.Controls.Add(this.IPLabel);
             this.SettingsTab.Controls.Add(this.label8);
             this.SettingsTab.Controls.Add(this.label7);
             this.SettingsTab.Controls.Add(this.label6);
@@ -323,10 +331,28 @@
             this.SettingsTab.Text = "Settings";
             this.SettingsTab.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(299, 190);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(127, 16);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Format like \'73.75W\'";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(299, 153);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(124, 16);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Format like \'42.65N\'";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 114);
+            this.label6.Location = new System.Drawing.Point(42, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(111, 16);
             this.label6.TabIndex = 4;
@@ -335,7 +361,7 @@
             // LongFrom
             // 
             this.LongFrom.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "LongFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.LongFrom.Location = new System.Drawing.Point(188, 111);
+            this.LongFrom.Location = new System.Drawing.Point(189, 187);
             this.LongFrom.Name = "LongFrom";
             this.LongFrom.Size = new System.Drawing.Size(89, 22);
             this.LongFrom.TabIndex = 5;
@@ -344,7 +370,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 76);
+            this.label5.Location = new System.Drawing.Point(42, 152);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 16);
             this.label5.TabIndex = 2;
@@ -353,7 +379,7 @@
             // LatFrom
             // 
             this.LatFrom.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "LatFrom", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.LatFrom.Location = new System.Drawing.Point(188, 73);
+            this.LatFrom.Location = new System.Drawing.Point(189, 149);
             this.LatFrom.Name = "LatFrom";
             this.LatFrom.Size = new System.Drawing.Size(89, 22);
             this.LatFrom.TabIndex = 3;
@@ -362,20 +388,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 38);
+            this.label1.Location = new System.Drawing.Point(552, 111);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Timezone Offset";
+            this.label1.Visible = false;
             // 
             // TimezoneOffset
             // 
             this.TimezoneOffset.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::NM2O_Spot_Analyzer.Properties.Settings.Default, "TimeZoneOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TimezoneOffset.Location = new System.Drawing.Point(188, 35);
+            this.TimezoneOffset.Location = new System.Drawing.Point(699, 108);
             this.TimezoneOffset.Name = "TimezoneOffset";
             this.TimezoneOffset.Size = new System.Drawing.Size(89, 22);
             this.TimezoneOffset.TabIndex = 1;
             this.TimezoneOffset.Text = global::NM2O_Spot_Analyzer.Properties.Settings.Default.TimeZoneOffset;
+            this.TimezoneOffset.Visible = false;
             this.TimezoneOffset.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEnter_NoDing);
             this.TimezoneOffset.Validating += new System.ComponentModel.CancelEventHandler(this.TimezoneOffset_Validating);
             // 
@@ -585,23 +613,33 @@
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
-            // label7
+            // IPLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(298, 77);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(124, 16);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Format like \'42.65N\'";
+            this.IPLabel.AutoSize = true;
+            this.IPLabel.Location = new System.Drawing.Point(42, 28);
+            this.IPLabel.Name = "IPLabel";
+            this.IPLabel.Size = new System.Drawing.Size(20, 16);
+            this.IPLabel.TabIndex = 8;
+            this.IPLabel.Text = "IP";
             // 
-            // label8
+            // label10
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(298, 114);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 16);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Format like \'73.75W\'";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(42, 60);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(242, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "-- Both spots and contacts must be sent.";
+            // 
+            // IncreaseFontSize
+            // 
+            this.IncreaseFontSize.Location = new System.Drawing.Point(50, 90);
+            this.IncreaseFontSize.Name = "IncreaseFontSize";
+            this.IncreaseFontSize.Size = new System.Drawing.Size(138, 23);
+            this.IncreaseFontSize.TabIndex = 9;
+            this.IncreaseFontSize.Text = "Increase Font Size";
+            this.IncreaseFontSize.UseVisualStyleBackColor = true;
+            this.IncreaseFontSize.Click += new System.EventHandler(this.IncreaseFontSize_Click);
             // 
             // callDataGridViewTextBoxColumn
             // 
@@ -624,6 +662,16 @@
             // 
             this.spotBindingSource.DataSource = typeof(NM2O_Spot_Analyzer.Spot);
             // 
+            // DecreaseFontSize
+            // 
+            this.DecreaseFontSize.Location = new System.Drawing.Point(194, 90);
+            this.DecreaseFontSize.Name = "DecreaseFontSize";
+            this.DecreaseFontSize.Size = new System.Drawing.Size(138, 23);
+            this.DecreaseFontSize.TabIndex = 10;
+            this.DecreaseFontSize.Text = "Decrease Font Size";
+            this.DecreaseFontSize.UseVisualStyleBackColor = true;
+            this.DecreaseFontSize.Click += new System.EventHandler(this.DecreaseFontSize_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -642,7 +690,7 @@
             this.Controls.Add(this.AllSpots);
             this.Controls.Add(this.AllSpotsLabel);
             this.Controls.Add(this.tabControl);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "NM2O Spot Analyzer";
@@ -720,6 +768,10 @@
         private System.Windows.Forms.TextBox LatFrom;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label IPLabel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button IncreaseFontSize;
+        private System.Windows.Forms.Button DecreaseFontSize;
     }
 }
 

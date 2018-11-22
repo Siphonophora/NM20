@@ -46,6 +46,7 @@ namespace NM2O_Spot_Analyzer
             this.Location = Properties.Settings.Default.MainFormLocation;
             this.StartPosition = FormStartPosition.Manual;
 
+            IPLabel.Text = $"Connect N1MM to {IPHelper.GetLocalIPAddress()} port 12060";
             PrecalculatedAnalysis.LoadAnalysis(@"Call_Analysis.csv", @"CountryZone_Analysis.csv");
             LoadPropButton_Click(this, null);
         }
@@ -176,6 +177,28 @@ namespace NM2O_Spot_Analyzer
         private void RunPropButton_Click(object sender, EventArgs e)
         {
             VoacapPropogation.Run(LatFrom.Text, LongFrom.Text);
+        }
+
+        private void IncreaseFontSize_Click(object sender, EventArgs e)
+        {
+            ChangeFontSize(1);
+        }
+
+        private void DecreaseFontSize_Click(object sender, EventArgs e)
+        {
+            ChangeFontSize(-1);
+        }
+
+        private void ChangeFontSize(float dif)
+        {
+            var font = this.Font;
+            if((font.Size + dif ) < 4)
+            {
+                MessageBox.Show("Font Cannot be Smaller", "Sorry!");
+                return;
+            }
+
+            this.Font = new System.Drawing.Font(font.FontFamily, font.Size + dif);
         }
     }
 }
