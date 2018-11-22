@@ -27,7 +27,15 @@ namespace CallParser
             var outtext = new List<string>();
 
             string[] templatehead = File.ReadAllLines("voacapx.dat.templatehead");
-            outtext.AddRange(templatehead);
+
+            foreach (string str in templatehead)
+            {
+                outtext.Add(str.Replace("$Year$", DateTime.UtcNow.Year.ToString())
+                    .Replace("$Month$", DateTime.UtcNow.Month.ToString("00"))
+                    .Replace("$Day$", DateTime.UtcNow.Day.ToString("00")));
+            }
+
+            
 
             string[] templatebody = File.ReadAllLines("voacapx.dat.templatebody");
 
