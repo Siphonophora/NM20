@@ -61,7 +61,20 @@ namespace NM2O_Spot_Analyzer
         public string Country { get { return CountryZone.Country; } }         //TODO handle nulls. 
         public string FixedCountryName { get { return Country.Replace('.', '_').Replace(' ', '_').Substring(0, Country.Length > 20 ? 20 : Country.Length); } }
         public int Zone { get { return CountryZone.CQZone; } }         //TODO handle nulls. 
-        public Propogation Propogation { get; set; }
+
+        //Propogation, with some minimal caching
+        public DateTime PropogationTime { get; set; } = DateTime.MinValue;
+        public bool PropogationCurrent => (DateTime.Now - PropogationTime).Minutes < 5; //5 Min
+        private Propogation propogation;
+        public Propogation Propogation
+        {
+            get { return propogation; }
+            set
+            {
+                PropogationTime = DateTime.Now;
+                propogation = value;
+            }
+        }
 
         public Spot() { }
 
@@ -93,7 +106,7 @@ namespace NM2O_Spot_Analyzer
             {
                 try
                 {
-                    if(Propogation.Rel == -1)
+                    if (Propogation.Rel == -1)
                     {
                         return "Unavailable";
                     }

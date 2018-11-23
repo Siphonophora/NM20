@@ -74,9 +74,11 @@ namespace NM2O_Spot_Analyzer
 
         private void RefreshData()
         {
+            int i = 0;
             //Get propogations
-            foreach (Spot spot in Analyzer.Spots)
+            foreach (Spot spot in Analyzer.Spots.Where(x => x.PropogationCurrent == false)) 
             {
+                i++;
                 spot.Propogation = VoacapPropogation.CurrentPropogation(spot.FixedCountryName, spot.Band);
             }
 
