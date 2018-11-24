@@ -18,6 +18,9 @@ namespace NM2O_Spot_Analyzer
     {
         public int ClickCount { get; set; } = 0;
 
+        public DateTime ViewTime { get; set; } = DateTime.MinValue;
+        public bool ViewCurrent => (DateTime.Now - ViewTime).Seconds < 5; //5 Sec
+
         public SpotAnalyzer Analyzer { get; set; } = new SpotAnalyzer();
         public BindingSource Source { get; set; } = new BindingSource();
         public UDPServerThread ServerThread { get; set; } = new UDPServerThread();
@@ -57,9 +60,7 @@ namespace NM2O_Spot_Analyzer
             Analyzer.BufferUpdate -= Buffer_BufferUpdate;
             ServerThread.Thread.Abort();
 
-            Directory.CreateDirectory($"C:\\temp\\");
-            File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Messages.txt", Analyzer.MessageBuffer);
-            File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Actions.txt", Analyzer.ActionLog);
+            WriteLogs();
 
             Properties.Settings.Default.MainFormHeight = this.Height;
             Properties.Settings.Default.MainFormWidth = this.Width;
@@ -67,16 +68,39 @@ namespace NM2O_Spot_Analyzer
             Properties.Settings.Default.Save();
         }
 
+        private void WriteLogs()
+        {
+            Directory.CreateDirectory($"C:\\temp\\");
+            File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Messages.txt", Analyzer.MessageBuffer);
+            File.WriteAllLines($"C:\\temp\\NM2O Analysis Log - {DateTime.Now.ToString("yyyy-MM-dd HH-mm")} Actions.txt", Analyzer.ActionLog);
+
+            Analyzer.MessageBuffer.Clear();
+            Analyzer.MessageBuffer.Add($"Cleaned log at {DateTime.Now.ToString("yyyy - MM - dd HH - mm")} see C:\\Temp");
+            Analyzer.ActionLog.Clear();
+            Analyzer.ActionLog.Add($"Cleaned log at {DateTime.Now.ToString("yyyy - MM - dd HH - mm")} see C:\\Temp");
+        }
+
         private void RefreshData(object sender, EventArgs e)
         {
-            RefreshData();
+            //If User event -- which comes from a list box
+            //if (sender.GetType().ToString() == "System.Windows.Forms.ListBox")
+            //{
+            //    RefreshData();
+            //}
+
+            //Throttle refresh frequency
+            if (!ViewCurrent)
+            {
+                ViewTime = DateTime.Now;
+                RefreshData();
+            }
         }
 
         private void RefreshData()
         {
             int i = 0;
             //Get propogations
-            foreach (Spot spot in Analyzer.Spots.Where(x => x.PropogationCurrent == false)) 
+            foreach (Spot spot in Analyzer.Spots.Where(x => x.PropogationCurrent == false))
             {
                 i++;
                 spot.Propogation = VoacapPropogation.CurrentPropogation(spot.FixedCountryName, spot.Band);
@@ -105,6 +129,12 @@ namespace NM2O_Spot_Analyzer
 
             DisplaySpots.Text = Spots.Count.ToString();
             AllSpots.Text = Analyzer.Spots.Count.ToString();
+
+            //Free up memory.
+            if(Analyzer.MessageBuffer.Count > 1000 || Analyzer.ActionLog.Count > 1000)
+            {
+                WriteLogs();
+            }
         }
 
         private void WireUpForm()
@@ -194,7 +224,7 @@ namespace NM2O_Spot_Analyzer
         private void ChangeFontSize(float dif)
         {
             var font = this.Font;
-            if((font.Size + dif ) < 4)
+            if ((font.Size + dif) < 4)
             {
                 MessageBox.Show("Font Cannot be Smaller", "Sorry!");
                 return;
